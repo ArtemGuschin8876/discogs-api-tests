@@ -19,3 +19,8 @@ test.describe('Discogs API - Releases', () => {
         expect(response.status()).toBe(404)
     });
 })
+
+
+// test.describe('Discogs API - Authorization', () => {
+//     test()
+// })
