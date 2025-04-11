@@ -1,3 +1,3 @@
 export enum Endpoints {
-    RELEASES = '/releases/'
+    RELEASES = 'releases/'
 }
