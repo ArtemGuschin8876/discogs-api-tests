@@ -1,3 +1,5 @@
 export enum Endpoints {
-    RELEASES = 'releases/'
+    RELEASES = 'releases/',
+    ARTISTS = 'artists/',
+    SEARCH = '/database/search'
 }
