@@ -4,8 +4,7 @@ import { Fixtures } from '../fixtures/fixtures';
 
 
 
-export const testDataFixture = base.extend<Fixtures>({
-
+export const test = base.extend<Fixtures>({
     testData: async ({}, use) => {
         const testData = DataHelper.getRandomReleaseId()
         await use(testData)

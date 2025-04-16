@@ -1,7 +1,8 @@
-import { APIRequestContext, test as base } from '@playwright/test'
+import { APIRequestContext} from '@playwright/test'
 import { ClientManager } from '../api/clients/clientManager';
-import { testDataFixture } from './data';
-
+import { test as clients } from '../fixtures/auth'
+import { test as testData} from '../fixtures/data'
+import { mergeTests } from '@playwright/test';
 
 export type Fixtures = {
     authorizedContext: APIRequestContext;
@@ -10,11 +11,6 @@ export type Fixtures = {
     clients: ClientManager;
 
 }
- 
-//вынести в общий все фикстуры
 
-export const test = base.extend<Fixtures>({
-    testData: testDataFixture.
-
-})
+export const test = mergeTests(clients, testData)
 

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../fixtures/auth';
+import { test } from '../fixtures/fixtures';
 import { ArtistResponse } from '../models/artist.response';
 
 const validArtistID = 4016434;
@@ -10,16 +10,17 @@ const invalidArtistName = 'Bob Marley'
 //Типизировать все ответы АПи
 //Сделать тесты на лейбл
 //Брать рандомный релиз из какого лейбла (лейбл захардкожен в env) это всё через фикстуру
-//Разделить фикстуры на 2 файла 
 //Тест на строку
 
 
 test.describe('Discogs API - artists', () => {
 
     test('Should return 200 for a valid release ID', async ({clients}) => {
-
+        
         const response = await clients.artistClient.getArtistById(validArtistID)
         expect(response.status()).toBe(200);
+        // const res = await clients.artistClient.getUrl()
+        // console.log(res)
     })
 
     test('Should return 404 if id unknown ID', async({clients}) => {

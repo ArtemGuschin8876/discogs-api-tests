@@ -1,11 +1,11 @@
-import { APIRequestContext, test as base, request } from '@playwright/test';
+import { test as base, request } from '@playwright/test';
 import { Fixtures } from '../fixtures/fixtures';
 import { Environment } from '../env';
 import { ClientManager } from '../api/clients/clientManager';
 
 
 
-export const authFixture = base.extend<Fixtures>({
+export const test = base.extend<Fixtures>({
      authorizedContext: async ({}, use) => {
         const context = await request.newContext({
             baseURL: Environment.BASE_URL,
