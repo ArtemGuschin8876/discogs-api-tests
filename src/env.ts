@@ -3,4 +3,5 @@ export class Environment {
     public static TOKEN = process.env.TOKEN
     public static BASE_URL = process.env.BASE_URL
     public static TOKEN_URL = process.env.TOKEN_URL
+    public static LABEL_ID = process.env.LABEL_ID
 }

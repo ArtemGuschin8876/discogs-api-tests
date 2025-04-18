@@ -1,47 +1,41 @@
 import { test } from '../fixtures/fixtures'
 import { expect } from '@playwright/test';
-import { ReleaseResponse } from '../models/release.response';
+import { ReleaseResponse } from '../models/api.models/release.response';
 import { DataHelper } from '../utils/data.helper';
+import { ReleaseAssertions } from '../api/assertions/release.assertions';
 
-
-const invalidReleaseID = 213239238; //null undefiend,  -1, 2.1,  
-
-//ПОДУМАТЬ тестовые данные из фикстуры
-
-
+//Сделать тесты на лейбл
+//Community Release Rating прикрутить к релизам 
+//Release Stats прикрутить
 
 
 test.describe('Discogs API - Releases', () => {
 
-    test('Should return 200 for a valid release ID', async ({clients, testData}) => {
+    test('should return 200, get release', async ({clients, randomRelease, randomReleaseID}) => {
 
-        const releaseId = DataHelper.getRandomReleaseId();
-
-        const response = await clients.releaseClient.getReleaseById(releaseId)
+        const response = await clients.releaseClient.getReleaseById(randomReleaseID)
         expect(response.status()).toBe(200)
 
-        const body: ReleaseResponse = await response.json()
-        expect(body.title).toBeTruthy();
-        expect(body.year).toBeGreaterThan(1900);
-        expect(body.artists.length).toBeGreaterThan(0)
+        const release: ReleaseResponse = await response.json();
+        ReleaseAssertions.validateResponse(release, randomRelease, randomReleaseID)
+
     });
+})
 
-    test('Should return 404 if id unknown ID', async ({clients}) => {
+test.describe('negative test for invalid release IDs', () => {
+    const invalidReleaseIDs = DataHelper.getInvalidReleaseID();  
+        invalidReleaseIDs.forEach((invalidID) => {
 
-        const response = await clients.releaseClient.getReleaseById(invalidReleaseID)
-        expect(response.status()).toBe(404)
-    });
+            test(`should return error for invalid ID: ${String(invalidID)}`, async ({clients}) => {
+                const response = await clients.releaseClient.getReleaseById(invalidID as number);
+                expect([400, 404]).toContain(response.status())
+                //response.status(). toContain(итд)
+                //проверить message ответа (message в константах)
+            });
+        
 
-    // test('Should return correct name of artist', async({clients}) => {
 
-    //     const response = await clients.releaseClient.getReleaseById(validReleaseID)
-    //     expect(response.status()).toBe(200)
-
-    //     const body = await response.json();
-    //     const name = body.artists[0].name
-
-    //     expect(name).toBe(validArtist)
-    // }); 
+        })
 })
 
 

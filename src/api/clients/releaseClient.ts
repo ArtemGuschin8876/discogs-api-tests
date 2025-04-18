@@ -5,7 +5,7 @@ import { Endpoints } from "../../utils/contstants/endpoints";
 
 
 export class ReleaseClient {
-
+    
     private url = `${Environment.BASE_URL}${Endpoints.RELEASES}`
     private context: APIRequestContext;
 
