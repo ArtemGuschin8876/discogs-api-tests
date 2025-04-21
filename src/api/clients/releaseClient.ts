@@ -13,8 +13,8 @@ export class ReleaseClient {
         this.context = context;
     }
 
-    async getReleaseById(id: number): Promise<APIResponse> {
-        return await this.context.get(`${this.url}${id}`)
+    async getReleaseById(id: unknown): Promise<APIResponse> {
+        return await this.context.get(`${this.url}${id}`) 
     }
 
 }

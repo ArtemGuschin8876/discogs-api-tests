@@ -9,10 +9,9 @@ export class DataHelper {
     }
 
 
-    static getInvalidReleaseID(): (number | string | null | undefined)[] {
+    static getInvalidReleaseID(): (unknown)[] {
         return [
             faker.number.int({min: -100, max: -1}),
-            -1,
             faker.number.float({min: 1.1, max: 100.9, fractionDigits: 1}),
             0,
             null,

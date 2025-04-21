@@ -108,3 +108,7 @@ export type ReleaseResponse = {
     estimated_weight: number;
     blocked_from_sale: boolean;
 };
+
+export type ReleaseErrors = {
+    message: string;
+}
