@@ -2,6 +2,7 @@ import { test as base} from '@playwright/test'
 import { DataHelper } from '../utils/data.helper'
 import { Fixtures } from '../fixtures/fixtures';
 import { ReleaseResponse } from '../models/api.models/release.response';
+import { ar } from '@faker-js/faker';
 
 //фикстура рандом релиз, а внутри две другие фикстуры , randomRelease(randomData), randomReleaseID, randomArtistID
 export const test = base.extend<Fixtures>({
@@ -14,19 +15,32 @@ export const test = base.extend<Fixtures>({
 
     randomRelease: async ({randomReleases}, use) => {
         const release = await DataHelper.getRandomRelease(randomReleases)
-        
+
         await use(release)
     },
 
     randomReleaseID: async({randomRelease}, use) => {
+
         await use(randomRelease.id)
     },
 
-    randomArtistID: async ({}, use) => {
-        
-    }
+    randomArtistID: async ({clients, randomRelease}, use) => {
+        const fullReleaseResponse = await clients.releaseClient.getReleaseById(randomRelease.id)
+        const fullRelease = await fullReleaseResponse.json() as ReleaseResponse;
+        const artistID = fullRelease.artists[0].id;
 
+        await use(artistID)
+    },
 
+    randomLabelID: async ({clients, randomRelease}, use) => {
+        const fullReleaseResponse = await clients.releaseClient.getReleaseById(randomRelease.id)
+        const fullRelease = await fullReleaseResponse.json() as ReleaseResponse;
+        const labelID = fullRelease.labels[0].id;
+
+        await use(labelID)
+    },
+
+    
 })
 
 

@@ -1,4 +1,4 @@
-import { APIRequestContext} from '@playwright/test'
+import { APIRequestContext, APIResponse} from '@playwright/test'
 import { ClientManager } from '../api/clients/clientManager';
 import { test as clients } from '../fixtures/auth'
 import { test as randomRelease} from '../fixtures/data'
@@ -13,7 +13,8 @@ export type Fixtures = {
     randomRelease: ReleaseResponse;
     randomReleases: ReleaseResponse[];
     randomReleaseID: number
-    randomArtistID: ReleaseResponse[];
+    randomArtistID: number;
+    randomLabelID: number;
 }
 
 export const test = mergeTests(clients, randomRelease)

@@ -109,6 +109,3 @@ export type ReleaseResponse = {
     blocked_from_sale: boolean;
 };
 
-export type ReleaseErrors = {
-    message: string;
-}

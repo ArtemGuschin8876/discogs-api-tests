@@ -1,5 +1,7 @@
+import { expect } from "@playwright/test";
 import { ReleaseResponse } from "../models/api.models/release.response";
 import { faker } from '@faker-js/faker';
+import { TextErrors } from "./contstants/text.errors";
 
 
 export class DataHelper {
@@ -9,7 +11,7 @@ export class DataHelper {
     }
 
 
-    static getInvalidReleaseID(): (unknown)[] {
+    static getInvalidID(): (unknown)[] {
         return [
             faker.number.int({min: -100, max: -1}),
             faker.number.float({min: 1.1, max: 100.9, fractionDigits: 1}),

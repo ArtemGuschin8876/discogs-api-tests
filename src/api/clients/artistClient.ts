@@ -11,7 +11,7 @@ export class ArtistClient {
         this.context = context;
     }
 
-    async getArtistById(id: number): Promise<APIResponse> {
+    async getArtistById(id: unknown): Promise<APIResponse> {
         return await this.context.get(`${this.url}${id}`)
     }
 

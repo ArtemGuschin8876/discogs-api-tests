@@ -1,19 +1,20 @@
 import { APIResponse, expect } from "@playwright/test";
-import { ReleaseErrors, ReleaseResponse } from "../../models/api.models/release.response";
-import { TextErrors } from "../../utils/contstants/text.errors";
+import { ReleaseResponse } from "../../models/api.models/release.response";
+import { BaseAssertions } from "./base.assertions";
+import { EntityErrors } from "../../utils/contstants/text.errors";
 
-export class ReleaseAssertions {
+export class ReleaseAssertions extends BaseAssertions{
 
-    
-
-    static validateCorrectResponse(response: APIResponse, responseJson: unknown, expectedRelease: ReleaseResponse, expectedID: number) {
-        
+    static validateCorrectResponse(
+        response: APIResponse, 
+        responseJson: unknown, 
+        expectedRelease: ReleaseResponse, 
+        expectedID: number
+    ) {
         const release = responseJson as ReleaseResponse;
 
-        expect(response.status()).toBe(200)
-
-        expect(expectedRelease).toBeDefined();
-        expect(expectedRelease.id).toBe(expectedID);
+        BaseAssertions.validateStatusCode(response, 200)
+        BaseAssertions.validateEntityId(release, expectedID);
 
         expect(expectedRelease.title).toBeDefined();
         expect(typeof expectedRelease.title).toBe('string');
@@ -28,16 +29,13 @@ export class ReleaseAssertions {
         expect(release.status).toBe(expectedRelease.status);    
     };
 
-    static async validateIncorrectResponse(response: APIResponse) {
+    static async validateIncorrectResponse(
+        response: APIResponse, 
+        responseJson: unknown
+    ) {
+        const responseBody = await responseJson as EntityErrors;
 
-        const responseBody = await response.json() as ReleaseErrors;
-
-        const allowedMessage = [
-            TextErrors.NOT_FOUND_RESOURCE,
-            TextErrors.RELEASE_NOT_EXIST,
-        ];
-
-        expect(response.status()).toBe(404);
-        expect(allowedMessage).toContain(responseBody.message);
+        BaseAssertions.validateStatusCode(response, 404);
+        BaseAssertions.validateMessageError(responseBody.message);
     }
 }
