@@ -37,5 +37,16 @@ export class ReleaseAssertions extends BaseAssertions{
 
         BaseAssertions.validateStatusCode(response, 404);
         BaseAssertions.validateMessageError(responseBody.message);
+    };
+
+    static async validateReleaseRating(
+        response: APIResponse, 
+        expectedID: number,
+        responseJson: unknown
+    ) {
+        
+
+        BaseAssertions.validateStatusCode(response, expectedID)
+        BaseAssertions.validateEntityId(responseJson)
     }
 }
