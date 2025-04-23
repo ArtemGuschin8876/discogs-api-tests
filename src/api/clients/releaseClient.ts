@@ -23,11 +23,14 @@ export class ReleaseClient {
     //     return await this.context.get(`${this.url}${id}`) 
     // }
 
-    async getReleaseById(id: number, params: RequestParams) {
+    async getReleaseById(id: number, params?: RequestParams) {
         return ApiHelper.sendApiRequest(
             this.context, 
             `${this.url}${id}`,
-            {...params, method: 'GET'}
+            {
+                ...params ?? {}, 
+                method: 'GET',
+            }
         );
     }
 

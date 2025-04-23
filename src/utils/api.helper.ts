@@ -14,8 +14,12 @@ export class ApiHelper {
             data: body,
         });
 
-        expect(response.status()).toBe(expectedStatusCode);
-        
+        if (expectedStatusCode) {
+            expect(response.status()).toBe(expectedStatusCode);
+        } else {
+            expect(response).toBeOK();
+        }
+
         return response;
     }
 }

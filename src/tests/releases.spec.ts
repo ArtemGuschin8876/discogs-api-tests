@@ -1,22 +1,16 @@
 import { test } from '../fixtures/fixtures';
-import { ReleaseResponse } from '../models/api.models/release.response';
-import { ReleaseRatingResponse } from '../models/api.models/release.rating.response';
 import { DataHelper } from '../utils/data.helper';
 import { ReleaseAssertions } from '../api/assertions/release.assertions';
-import { STATUS_CODES } from 'http';
+import { ReleaseResponse } from '../models/api.models/release.response';
 
 //Release Stats прикрутить
 
 test.describe('Discogs API - Releases', () => {
-    test('should return 200, get release', async ({clients, randomReleaseID}) => {
+    test('should return 200, get release', async ({clients, randomReleaseID, randomRelease}) => {
+        const response = await clients.releaseClient.getReleaseById(randomReleaseID);
+        const release: ReleaseResponse = await response.json();
 
-        const response = await clients.releaseClient.getReleaseById(randomReleaseID, {
-            expectedStatusCode: 200,
-        });
-        
-        const release = await response.json();
-
-        // ReleaseAssertions.validateCorrectResponse(response, release, randomRelease, randomReleaseID)
+        ReleaseAssertions.validateCorrectResponse(release, randomRelease, randomReleaseID)
     });
 });
 
