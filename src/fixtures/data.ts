@@ -40,6 +40,12 @@ export const test = base.extend<Fixtures>({
         await use(labelID)
     },
 
+    randomInvalidID: async ({}, use) => {
+        const invalidID = DataHelper.getInvalidID();
+
+        await use(invalidID)
+    }
+
     
 })
 

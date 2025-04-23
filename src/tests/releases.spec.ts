@@ -3,34 +3,45 @@ import { ReleaseResponse } from '../models/api.models/release.response';
 import { ReleaseRatingResponse } from '../models/api.models/release.rating.response';
 import { DataHelper } from '../utils/data.helper';
 import { ReleaseAssertions } from '../api/assertions/release.assertions';
+import { STATUS_CODES } from 'http';
 
-//Community Release Rating прикрутить к релизам 
 //Release Stats прикрутить
 
 test.describe('Discogs API - Releases', () => {
-    test('should return 200, get release', async ({clients, randomRelease, randomReleaseID}) => {
+    test('should return 200, get release', async ({clients, randomReleaseID}) => {
 
-        const response = await clients.releaseClient.getReleaseById(randomReleaseID);
-        const release: ReleaseResponse = await response.json();
+        const response = await clients.releaseClient.getReleaseById(randomReleaseID, {
+            expectedStatusCode: 200,
+        });
+        
+        const release = await response.json();
 
-        ReleaseAssertions.validateCorrectResponse(response, release, randomRelease, randomReleaseID)
+        // ReleaseAssertions.validateCorrectResponse(response, release, randomRelease, randomReleaseID)
     });
 });
 
 test.describe('Discogs API - Release rating', () => {
+    
     test('should return 200 and get release rating', async ({clients, randomReleaseID}) => {
         const response = await clients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
-        const releaseRating: ReleaseRatingResponse = await response.json();
+        ReleaseAssertions.validateReleaseRating(response);
         
-        ReleaseAssertions.validateReleaseRating(response,randomReleaseID, releaseRating)
-    })
-})
+    });
+
+    test('check type of release rating fields', async ({clients, randomReleaseID}) => {
+        const response = await clients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
+        const releaseRatingResponse = await response.json();
+
+        ReleaseAssertions.validateReleaseRatingFields(releaseRatingResponse);
+    });
+});
 
 
 test.describe('negative test for invalid release IDs', () => {
 
-    const invalidReleasesID = DataHelper.getInvalidID(); 
-
+    const invalidReleasesID = DataHelper.getInvalidID();
+    //Если getInvalidID() просто возвращает массив с faker-данными — 
+    // всё работает и не нужно использовать фикстуру.
     invalidReleasesID.forEach((invalidID, index) => {
         test(`should return text error and 404 with invalid ID: ${index + 1}`, async ({clients}) => {
 

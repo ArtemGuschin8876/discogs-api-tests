@@ -15,6 +15,7 @@ export type Fixtures = {
     randomReleaseID: number
     randomArtistID: number;
     randomLabelID: number;
+    randomInvalidID: unknown;
 }
 
 export const test = mergeTests(clients, randomRelease)

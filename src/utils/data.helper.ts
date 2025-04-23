@@ -22,6 +22,6 @@ export class DataHelper {
             faker.string.alphanumeric({length: 10}),
             faker.string.symbol({min: 1, max: 5}),
         ];
-    };
+    }; //Возвращать лейбл теста 
 }
 

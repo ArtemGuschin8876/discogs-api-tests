@@ -2,6 +2,7 @@ import { APIResponse, expect } from "@playwright/test";
 import { ReleaseResponse } from "../../models/api.models/release.response";
 import { BaseAssertions } from "./base.assertions";
 import { EntityErrors } from "../../utils/contstants/text.errors";
+import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
 
 export class ReleaseAssertions extends BaseAssertions{
 
@@ -41,12 +42,16 @@ export class ReleaseAssertions extends BaseAssertions{
 
     static async validateReleaseRating(
         response: APIResponse, 
-        expectedID: number,
+    ) {
+        BaseAssertions.validateStatusCode(response, 200);
+    }
+
+    static async validateReleaseRatingFields(
         responseJson: unknown
     ) {
-        
+        const responseBody = responseJson as ReleaseRatingResponse;
 
-        BaseAssertions.validateStatusCode(response, expectedID)
-        BaseAssertions.validateEntityId(responseJson)
+        expect(typeof responseBody.rating.count).toBe('number');
+        expect(responseBody.rating.average % 1 !== 0).toBe(true);
     }
 }
