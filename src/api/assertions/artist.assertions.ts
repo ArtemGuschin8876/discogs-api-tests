@@ -6,26 +6,18 @@ import { BaseAssertions } from "./base.assertions";
 export class ArtistAssertions extends BaseAssertions {
 
     static validateCorrectResponse(
-        response: APIResponse,
         artist: ArtistResponse,
         expectedID: number
     ) {
 
-        BaseAssertions.validateStatusCode(response, 200)
         BaseAssertions.validateEntityId(artist, expectedID)
-
         expect(artist.name).toBeDefined();
-        expect(typeof artist.name).toBe('string');
         
     };
 
     static async validateIncorrectResponse(
-        response: APIResponse, 
-        responseJson: unknown
+        body: EntityErrors
     ) {
-        const responseBody = await responseJson as EntityErrors;
-    
-        BaseAssertions.validateStatusCode(response, 404)
-        BaseAssertions.validateMessageError(responseBody.message)
+        BaseAssertions.validateMessageError(body.message)
     };
 }

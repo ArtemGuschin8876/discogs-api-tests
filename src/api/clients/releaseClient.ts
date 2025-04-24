@@ -1,10 +1,10 @@
-import { APIRequest, APIRequestContext, APIResponse } from "@playwright/test";
+import { APIRequestContext } from "@playwright/test";
 import { Environment } from "../../env";
 import { Endpoints } from "../../utils/contstants/endpoints";
-import { get } from "http";
-import { ur } from "@faker-js/faker";
-import { ApiHelper } from "../../utils/api.helper";
-import { RequestParams } from "../../models/request.params";
+import { ApiHelper, RequestParams } from "../../utils/api.helper";
+import { ReleaseResponse } from "../../models/api.models/release.response";
+import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
+import { EntityErrors } from "../../utils/contstants/text.errors";
 
 
 
@@ -17,14 +17,12 @@ export class ReleaseClient {
         this.context = context;
     }
 
+    async getValidReleaseById(
+        id: unknown, 
+        params?: RequestParams
+    ): Promise<{ releaseResponse : ReleaseResponse,  status: number}> {
 
-
-    // async getReleaseById(id: unknown): Promise<APIResponse> {
-    //     return await this.context.get(`${this.url}${id}`) 
-    // }
-
-    async getReleaseById(id: number, params?: RequestParams) {
-        return ApiHelper.sendApiRequest(
+         const response = await ApiHelper.sendApiRequest(
             this.context, 
             `${this.url}${id}`,
             {
@@ -32,11 +30,49 @@ export class ReleaseClient {
                 method: 'GET',
             }
         );
-    }
+        return {
+            releaseResponse: await response.json(),
+            status: response.status(),
+        };
+    };
 
-    async getReleaseRatingByReleaseId(id:unknown): Promise<APIResponse> {
-        return await this.context.get(`${this.url}${id}/${Endpoints.RELEASE_RATING}`)
-    }
+    async getInValidReleaseById(
+        id: unknown, 
+        params?: RequestParams
+    ): Promise<{ body : EntityErrors,  status: number}> {
+
+         const response = await ApiHelper.sendApiRequest(
+            this.context, 
+            `${this.url}${id}`,
+            {
+                ...params ?? {}, 
+                method: 'GET',
+            }
+        );
+        return {
+            body: await response.json(),
+            status: response.status(),
+        };
+    };
+
+    async getReleaseRatingByReleaseId(
+        id:unknown,
+        params?: RequestParams
+    ): Promise<{releaseRatinResponse: ReleaseRatingResponse, status: number}> {
+
+        const response = await ApiHelper.sendApiRequest(
+            this.context,
+            `${this.url}${id}/${Endpoints.RELEASE_RATING}`,
+            {
+                ...params ?? {},
+                method: 'GET',
+            }
+        )
+        return {
+            releaseRatinResponse: await response.json(),
+            status: response.status(),
+        };
+    };
 
 
 

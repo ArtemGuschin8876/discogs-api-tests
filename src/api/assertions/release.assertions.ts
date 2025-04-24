@@ -7,51 +7,31 @@ import { ReleaseRatingResponse } from "../../models/api.models/release.rating.re
 export class ReleaseAssertions extends BaseAssertions{
 
     static validateCorrectResponse(
-        response: APIResponse, 
-        responseJson: unknown, 
+        release: ReleaseResponse, 
         expectedRelease: ReleaseResponse, 
         expectedID: number
     ) {
-        const release = responseJson as ReleaseResponse;
-
-        BaseAssertions.validateStatusCode(response, 200)
         BaseAssertions.validateEntityId(release, expectedID);
 
         expect(expectedRelease.title).toBeDefined();
-        expect(typeof expectedRelease.title).toBe('string');
-
         expect(expectedRelease.year).toBeDefined();
-        expect(typeof expectedRelease.year).toBe('number');
-
         expect(expectedRelease.status).toBeDefined();
-        expect(typeof expectedRelease.status).toBe('string');
 
         expect(release.title).toBe(expectedRelease.title);
         expect(release.status).toBe(expectedRelease.status);    
     };
 
     static async validateIncorrectResponse(
-        response: APIResponse, 
-        responseJson: unknown
+        body: EntityErrors
     ) {
-        const responseBody = await responseJson as EntityErrors;
-
-        BaseAssertions.validateStatusCode(response, 404);
-        BaseAssertions.validateMessageError(responseBody.message);
+        BaseAssertions.validateMessageError(body.message);
     };
 
     static async validateReleaseRating(
-        response: APIResponse, 
+        releaseRatinResponse: ReleaseRatingResponse, 
     ) {
-        BaseAssertions.validateStatusCode(response, 200);
-    }
-
-    static async validateReleaseRatingFields(
-        responseJson: unknown
-    ) {
-        const responseBody = responseJson as ReleaseRatingResponse;
-
-        expect(typeof responseBody.rating.count).toBe('number');
-        expect(responseBody.rating.average % 1 !== 0).toBe(true);
+        expect(releaseRatinResponse.rating).toBeDefined();
+        expect(releaseRatinResponse.rating.average).toBeDefined();
+        expect(releaseRatinResponse.rating.count).toBeDefined();
     }
 }

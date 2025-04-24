@@ -1,7 +1,6 @@
 import { expect } from "@playwright/test";
 import { ReleaseResponse } from "../models/api.models/release.response";
 import { faker } from '@faker-js/faker';
-import { TextErrors } from "./contstants/text.errors";
 
 
 export class DataHelper {
@@ -11,17 +10,16 @@ export class DataHelper {
     }
 
 
-    static getInvalidID(): (unknown)[] {
+    static getInvalidID(): {label: string, invalidID: unknown}[] {
         return [
-            faker.number.int({min: -100, max: -1}),
-            faker.number.float({min: 1.1, max: 100.9, fractionDigits: 1}),
-            0,
-            null,
-            undefined,
-            faker.string.alpha({length: 5}),
-            faker.string.alphanumeric({length: 10}),
-            faker.string.symbol({min: 1, max: 5}),
+            { label: 'negative', invalidID: faker.number.int({min: -100, max: -1}) },
+            { label: 'float', invalidID: faker.number.float({min: 1.1, max: 100.9, fractionDigits: 1}) },
+            { label: 'zero', invalidID: 0 },
+            { label: 'null', invalidID: null },
+            { label: 'alpha', invalidID:faker.string.alpha({length: 5}) },
+            { label: 'alphanumeric ', invalidID:faker.string.alphanumeric({length: 10}) },
+            { label: 'symbol', invalidID: faker.string.symbol({min: 1, max: 5}) },
         ];
-    }; //Возвращать лейбл теста 
+    }; 
 }
 

@@ -1,6 +1,9 @@
 import { APIRequestContext, APIResponse } from "@playwright/test"
 import { Environment } from "../../env";
 import { Endpoints } from "../../utils/contstants/endpoints";
+import { ApiHelper, RequestParams } from "../../utils/api.helper";
+import { ArtistResponse } from "../../models/api.models/artist.response";
+import { EntityErrors } from "../../utils/contstants/text.errors";
 
 export class ArtistClient {
 
@@ -11,9 +14,41 @@ export class ArtistClient {
         this.context = context;
     }
 
-    async getArtistById(id: unknown): Promise<APIResponse> {
-        return await this.context.get(`${this.url}${id}`)
-    }
+    async getValidArtistById(
+            id: unknown, 
+            params?: RequestParams
+        ): Promise<{ artistResponse : ArtistResponse,  status: number}> {
+             const response = await ApiHelper.sendApiRequest(
+                this.context, 
+                `${this.url}${id}`,
+                {
+                    ...params ?? {}, 
+                    method: 'GET',
+                }
+            );
+            return {
+                artistResponse: await response.json(),
+                status: response.status(),
+            };
+        };
+
+    async getInvalidValidArtistById(
+            id: unknown, 
+            params?: RequestParams
+        ): Promise<{ body : EntityErrors,  status: number}> {
+             const response = await ApiHelper.sendApiRequest(
+                this.context, 
+                `${this.url}${id}`,
+                {
+                    ...params ?? {}, 
+                    method: 'GET',
+                }
+            );
+            return {
+                body: await response.json(),
+                status: response.status(),
+            };
+        };
 
     
 }

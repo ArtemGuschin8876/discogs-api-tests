@@ -1,5 +1,13 @@
 import { APIRequestContext, APIResponse, expect } from "@playwright/test";
-import { RequestParams } from "../models/request.params";
+import { BaseAssertions } from "../api/assertions/base.assertions";
+
+
+export type RequestParams = {
+    expectedStatusCode?: number;
+    method?: 'GET' | 'POST' | 'PUT' | 'PATCH' |'DELETE';
+    body?: unknown;
+}
+
 
 export class ApiHelper {
     static async sendApiRequest(ctx: APIRequestContext, url: string, params: RequestParams): Promise<APIResponse> {
@@ -15,7 +23,7 @@ export class ApiHelper {
         });
 
         if (expectedStatusCode) {
-            expect(response.status()).toBe(expectedStatusCode);
+            BaseAssertions.validateStatusCode(response, expectedStatusCode)
         } else {
             expect(response).toBeOK();
         }

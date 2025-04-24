@@ -6,43 +6,30 @@ import { ReleaseResponse } from '../models/api.models/release.response';
 //Release Stats прикрутить
 
 test.describe('Discogs API - Releases', () => {
-    test('should return 200, get release', async ({clients, randomReleaseID, randomRelease}) => {
-        const response = await clients.releaseClient.getReleaseById(randomReleaseID);
-        const release: ReleaseResponse = await response.json();
+    test('Should return 200, get release', async ({clients, randomReleaseID, randomRelease}) => {
 
-        ReleaseAssertions.validateCorrectResponse(release, randomRelease, randomReleaseID)
+        const {releaseResponse} = await clients.releaseClient.getValidReleaseById(randomReleaseID);
+        ReleaseAssertions.validateCorrectResponse(releaseResponse, randomRelease, randomReleaseID);
+
     });
 });
 
 test.describe('Discogs API - Release rating', () => {
-    
-    test('should return 200 and get release rating', async ({clients, randomReleaseID}) => {
-        const response = await clients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
-        ReleaseAssertions.validateReleaseRating(response);
+    test('Should return 200 and get release rating', async ({clients, randomReleaseID}) => {
         
-    });
-
-    test('check type of release rating fields', async ({clients, randomReleaseID}) => {
-        const response = await clients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
-        const releaseRatingResponse = await response.json();
-
-        ReleaseAssertions.validateReleaseRatingFields(releaseRatingResponse);
+        const {releaseRatinResponse} = await clients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
+        ReleaseAssertions.validateReleaseRating(releaseRatinResponse)
     });
 });
 
 
-test.describe('negative test for invalid release IDs', () => {
-
-    const invalidReleasesID = DataHelper.getInvalidID();
-    //Если getInvalidID() просто возвращает массив с faker-данными — 
-    // всё работает и не нужно использовать фикстуру.
-    invalidReleasesID.forEach((invalidID, index) => {
-        test(`should return text error and 404 with invalid ID: ${index + 1}`, async ({clients}) => {
-
-            const response = await clients.releaseClient.getReleaseById(invalidID);
-            const responseBody = await response.json();
-
-            ReleaseAssertions.validateIncorrectResponse(response, responseBody);
+test.describe('Negative test for invalid release IDs', () => {
+    DataHelper.getInvalidID().forEach(({label, invalidID}, index) => {
+        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({clients}) => {
+            const {body} = await clients.releaseClient.getInValidReleaseById(invalidID, {
+                expectedStatusCode: 404,
+            });
+            ReleaseAssertions.validateIncorrectResponse(body);
         });
     });
 });

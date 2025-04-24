@@ -1,5 +1,4 @@
 import { test } from '../fixtures/fixtures';
-import { ArtistResponse } from '../models/api.models/artist.response';
 import { ArtistAssertions } from '../api/assertions/artist.assertions';
 import { DataHelper } from '../utils/data.helper';
 
@@ -7,24 +6,16 @@ import { DataHelper } from '../utils/data.helper';
 test.describe('Discogs API - artists', () => {
 
     test('Should return 200 for a valid release ID', async ({clients, randomArtistID}) => {
-        const response = await clients.artistClient.getArtistById(randomArtistID);
-        const artist: ArtistResponse = await response.json();
-
-        ArtistAssertions.validateCorrectResponse(response, artist, randomArtistID)
+        const {artistResponse} = await clients.artistClient.getValidArtistById(randomArtistID);
+        ArtistAssertions.validateCorrectResponse(artistResponse, randomArtistID)
     });
 })
 
-test.describe('negative test for invalid artist IDs', () => {
-
-    const invalidArtistsID = DataHelper.getInvalidID(); 
-
-    invalidArtistsID.forEach((invalidID, index) => {
-        test(`should return text error and 404 with invalid ID: ${index + 1}`, async ({clients}) => {
-
-            const response = await clients.artistClient.getArtistById(invalidID);
-            const responseBody = await response.json();
-
-            ArtistAssertions.validateIncorrectResponse(response, responseBody);
+test.describe('Negative test for invalid artist IDs', () => {
+    DataHelper.getInvalidID().forEach(({invalidID, label}, index) => {
+        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({clients}) => {
+            const {body} = await clients.artistClient.getInvalidValidArtistById(invalidID);
+            ArtistAssertions.validateIncorrectResponse(body);
         });
     });
 });
