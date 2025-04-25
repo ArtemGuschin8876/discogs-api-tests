@@ -1,6 +1,6 @@
 import { APIResponse, expect } from "@playwright/test";
 import { ArtistResponse } from "../../models/api.models/artist.response";
-import { EntityErrors } from "../../utils/contstants/text.errors";
+import { EntityErrors } from "../../models/api.models/error.responses";
 import { BaseAssertions } from "./base.assertions";
 
 export class ArtistAssertions extends BaseAssertions {

@@ -1,7 +1,7 @@
-import { APIResponse, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { ReleaseResponse } from "../../models/api.models/release.response";
 import { BaseAssertions } from "./base.assertions";
-import { EntityErrors } from "../../utils/contstants/text.errors";
+import { EntityErrors } from "../../models/api.models/error.responses";
 import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
 
 export class ReleaseAssertions extends BaseAssertions{

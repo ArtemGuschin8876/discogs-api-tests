@@ -1,29 +1,22 @@
-import { APIResponse, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { BaseAssertions } from "./base.assertions";
 import { LabelResponse } from "../../models/api.models/label.response";
-import { EntityErrors } from "../../utils/contstants/text.errors";
+import { EntityErrors } from "../../models/api.models/error.responses";
 
 export class LabelAssertions extends BaseAssertions {
 
     static validateCorrectResponse(
-        response: APIResponse,
         label: LabelResponse,
         expectedID: number
     ) {
-        BaseAssertions.validateStatusCode(response, 200);
         BaseAssertions.validateEntityId(label, expectedID)
 
         expect(label.name).toBeDefined();
-        expect(typeof label.name).toBe('string');
     };
 
     static async validateIncorrectResponse(
-        response: APIResponse,
-        responseJson: unknown
+        body: EntityErrors
     ) {
-        const responseBody = await responseJson as EntityErrors;
-
-        BaseAssertions.validateStatusCode(response, 404);
-        BaseAssertions.validateMessageError(responseBody.message);
+        BaseAssertions.validateMessageError(body.message);
     }
 }

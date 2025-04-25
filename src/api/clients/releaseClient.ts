@@ -4,7 +4,7 @@ import { Endpoints } from "../../utils/contstants/endpoints";
 import { ApiHelper, RequestParams } from "../../utils/api.helper";
 import { ReleaseResponse } from "../../models/api.models/release.response";
 import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
-import { EntityErrors } from "../../utils/contstants/text.errors";
+import { EntityErrors } from "../../models/api.models/error.responses";
 
 
 
@@ -17,40 +17,21 @@ export class ReleaseClient {
         this.context = context;
     }
 
-    async getValidReleaseById(
+    async getReleaseById(
         id: unknown, 
         params?: RequestParams
-    ): Promise<{ releaseResponse : ReleaseResponse,  status: number}> {
+    ): Promise<{ releaseResponse : ReleaseResponse | EntityErrors,  status: number}> {
 
          const response = await ApiHelper.sendApiRequest(
             this.context, 
             `${this.url}${id}`,
             {
-                ...params ?? {}, 
+                ...params, 
                 method: 'GET',
             }
         );
         return {
             releaseResponse: await response.json(),
-            status: response.status(),
-        };
-    };
-
-    async getInValidReleaseById(
-        id: unknown, 
-        params?: RequestParams
-    ): Promise<{ body : EntityErrors,  status: number}> {
-
-         const response = await ApiHelper.sendApiRequest(
-            this.context, 
-            `${this.url}${id}`,
-            {
-                ...params ?? {}, 
-                method: 'GET',
-            }
-        );
-        return {
-            body: await response.json(),
             status: response.status(),
         };
     };

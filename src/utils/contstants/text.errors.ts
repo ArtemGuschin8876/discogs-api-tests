@@ -5,6 +5,3 @@ export enum TextErrors {
     LABEL_NOT_FOUND='Label not found',
 }
 
-export type EntityErrors = {
-    message: string;
-}
