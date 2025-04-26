@@ -5,7 +5,7 @@ import { ApiHelper, RequestParams } from "../../utils/api.helper";
 import { ReleaseResponse } from "../../models/api.models/release.response";
 import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
 import { EntityErrors } from "../../models/api.models/error.responses";
-
+import { ReleaseStats } from '../../models/api.models/release.stats.response';
 
 
 export class ReleaseClient {
@@ -45,12 +45,32 @@ export class ReleaseClient {
             this.context,
             `${this.url}${id}/${Endpoints.RELEASE_RATING}`,
             {
-                ...params ?? {},
+                ...params,
                 method: 'GET',
-            }
+            },
         )
         return {
             releaseRatinResponse: await response.json(),
+            status: response.status(),
+        };
+    };
+
+    async getReleaseStats(
+        id: unknown,
+        params?: RequestParams
+    ): Promise<{releaseStats: ReleaseStats, status: number}> {
+
+        const response = await ApiHelper.sendApiRequest(
+            this.context,
+            `${this.url}${id}/${Endpoints.STATS}`,
+           {
+                ...params,
+                method: 'GET'
+           },  
+        );
+
+        return {
+            releaseStats: await response.json(),
             status: response.status(),
         };
     };

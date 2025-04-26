@@ -4,4 +4,11 @@ export class Environment {
     public static BASE_URL = process.env.BASE_URL
     public static TOKEN_URL = process.env.TOKEN_URL
     public static LABEL_ID = process.env.LABEL_ID
+    public static USER_NAME = process.env.USER_NAME 
+    public static CONSUMER_KEY=process.env.CONSUMER_KEY
+    public static CONSUMER_SECRET=process.env.CONSUMER_SECRET
+    public static OAUTH_TOKEN=process.env.OAUTH_TOKEN
+    public static OAUTH_TOKEN_SECRET=process.env.OAUTH_TOKEN_SECRET
+
+
 }

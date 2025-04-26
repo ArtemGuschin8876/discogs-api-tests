@@ -3,6 +3,7 @@ import { ReleaseResponse } from "../../models/api.models/release.response";
 import { BaseAssertions } from "./base.assertions";
 import { EntityErrors } from "../../models/api.models/error.responses";
 import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
+import { ReleaseStats } from "../../models/api.models/release.stats.response";
 
 export class ReleaseAssertions extends BaseAssertions{
 
@@ -33,5 +34,12 @@ export class ReleaseAssertions extends BaseAssertions{
         expect(releaseRatinResponse.rating).toBeDefined();
         expect(releaseRatinResponse.rating.average).toBeDefined();
         expect(releaseRatinResponse.rating.count).toBeDefined();
+    }
+
+    static async validateReleaseStats(
+        releaseStats: ReleaseStats
+    ) {
+        expect(releaseStats.num_have).toBeDefined();
+        expect(releaseStats.num_want).toBeDefined();
     }
 }

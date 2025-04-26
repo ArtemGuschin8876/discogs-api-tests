@@ -9,7 +9,7 @@ import { EntityErrors } from '../models/api.models/error.responses';
 test.describe('Discogs API - labels', () => {
 
     test('Should return 200 for a valid label ID', async ({clients, randomLabelID}) => {
-        const {labelResponse} = await clients.labelsClient.getLabelById(randomLabelID)
+        const {labelResponse} = await clients.unathorized.labelsClient.getLabelById(randomLabelID)
         LabelAssertions.validateCorrectResponse(labelResponse as LabelResponse, randomLabelID)
     });
 });
@@ -21,7 +21,7 @@ test.describe('negative test for invalid artist IDs', () => {
     invalidLabelID.forEach(({invalidID, label}, index ) => {
         test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({clients}) => {
 
-            const {labelResponse} = await clients.labelsClient.getLabelById(invalidID, {
+            const {labelResponse} = await clients.unathorized.labelsClient.getLabelById(invalidID, {
                 expectedStatusCode: 404
             });
             LabelAssertions.validateIncorrectResponse(labelResponse as EntityErrors);
