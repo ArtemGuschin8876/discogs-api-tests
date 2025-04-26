@@ -7,7 +7,7 @@ import { Endpoints } from "../../utils/contstants/endpoints";
 
 export class WantlistClient {
 
-    private getWanlistUrl = `${Environment.BASE_URL}${Endpoints.USERS}`
+    private WanlistUrl = `${Environment.BASE_URL}${Endpoints.USERS}`
     private context: APIRequestContext;
     
     constructor(context: APIRequestContext) {
@@ -21,7 +21,7 @@ export class WantlistClient {
     
              const response = await ApiHelper.sendApiRequest(
                 this.context, 
-                `${this.getWanlistUrl}${username}/${Endpoints.WANTS}`,
+                `${this.WanlistUrl}${username}/${Endpoints.WANTS}`,
                 {
                     ...params, 
                     method: 'GET',
@@ -31,6 +31,18 @@ export class WantlistClient {
                 wantlist: await response.json(),
                 status: response.status(),
             };
-        };
+    };
+
+    async addReleaseToWantlist(
+        username: string,
+        id: number
+    ) {
+        return await ApiHelper.sendApiRequest(
+            this.context,
+            `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
+            {
+                method: 'PUT'
+            });
+    }
 
 }
