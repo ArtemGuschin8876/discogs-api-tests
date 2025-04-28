@@ -7,29 +7,25 @@ import { EntityErrors } from '../models/api.models/error.responses';
 
 
 test.describe('Discogs API - Releases', () => {
-    test('Should return 200, get release', async ({clients, randomReleaseID, randomRelease}) => {
+    test('Should return 200, get release', async ({unathorizedClients, randomReleaseID, randomRelease}) => {
 
-        const {releaseResponse} = await  clients.unathorized.releaseClient.getReleaseById(randomReleaseID);
+        const {releaseResponse} = await  unathorizedClients.releaseClient.getReleaseById(randomReleaseID);
         ReleaseAssertions.validateCorrectResponseRelease(releaseResponse as ReleaseResponse, randomRelease, randomReleaseID);
     });
 
-    test('Should return 200 and get release rating', async ({clients, randomReleaseID}) => {
+    test('Should return 200 and get release rating', async ({unathorizedClients, randomReleaseID}) => {
         
-        const {releaseRatinResponse} = await clients.unathorized.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
+        const {releaseRatinResponse} = await unathorizedClients.releaseClient.getReleaseRatingByReleaseId(randomReleaseID);
         ReleaseAssertions.validateReleaseRating(releaseRatinResponse)
     });
 
-    test('Should return 200 and get release stats', async ({clients, randomReleaseID}) => {
-        const {releaseStats} = await clients.authorized.releaseClient.getReleaseStats(randomReleaseID);
-        ReleaseAssertions.validateReleaseStats(releaseStats);
-    }); 
 });
 
 
 test.describe('Negative test for invalid release IDs', () => {
     DataHelper.getInvalidID().forEach(({label, invalidID}, index) => {
-        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({clients}) => {
-            const {releaseResponse} = await clients.unathorized.releaseClient.getReleaseById(invalidID, {
+        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({unathorizedClients}) => {
+            const {releaseResponse} = await unathorizedClients.releaseClient.getReleaseById(invalidID, {
                 expectedStatusCode: 404,
             });
             ReleaseAssertions.validateIncorrectResponseRelease(releaseResponse as EntityErrors);

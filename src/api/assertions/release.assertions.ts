@@ -7,7 +7,7 @@ import { ReleaseStats } from "../../models/api.models/release.stats.response";
 
 export class ReleaseAssertions extends BaseAssertions{
 
-    static validateCorrectResponse(
+    static validateCorrectResponseRelease(
         release: ReleaseResponse, 
         expectedRelease: ReleaseResponse, 
         expectedID: number
@@ -22,7 +22,7 @@ export class ReleaseAssertions extends BaseAssertions{
         expect(release.status).toBe(expectedRelease.status);    
     };
 
-    static async validateIncorrectResponse(
+    static async validateIncorrectResponseRelease(
         body: EntityErrors
     ) {
         BaseAssertions.validateMessageError(body.message);

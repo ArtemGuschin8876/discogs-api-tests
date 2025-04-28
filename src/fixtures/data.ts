@@ -5,8 +5,8 @@ import { ReleaseResponse } from '../models/api.models/release.response';
 
 //фикстура рандом релиз, а внутри две другие фикстуры , randomRelease(randomData), randomReleaseID, randomArtistID
 export const test = base.extend<Fixtures>({
-    randomReleases: async ({clients}, use) => {
-        const response = await clients.unathorized.labelsClient.getLabelReleases();
+    randomReleases: async ({unathorizedClients}, use) => {
+        const response = await unathorizedClients.labelsClient.getLabelReleases();
         const releases: ReleaseResponse[] = (await response.json()).releases;
 
         await use(releases)
@@ -22,16 +22,16 @@ export const test = base.extend<Fixtures>({
         await use(randomRelease.id)
     },
 
-    randomArtistID: async ({clients, randomRelease}, use) => {
-        const { releaseResponse } = await clients.unathorized.releaseClient.getReleaseById(randomRelease.id)
+    randomArtistID: async ({unathorizedClients, randomRelease}, use) => {
+        const { releaseResponse } = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
         const fullRelease = releaseResponse as ReleaseResponse;
         const artistID = fullRelease.artists[0].id;
 
         await use(artistID)
     },
 
-    randomLabelID: async ({clients, randomRelease}, use) => {
-        const {releaseResponse} = await clients.unathorized.releaseClient.getReleaseById(randomRelease.id)
+    randomLabelID: async ({unathorizedClients, randomRelease}, use) => {
+        const {releaseResponse} = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
         const fullRelease = releaseResponse as ReleaseResponse;
         const labelID = fullRelease.labels[0].id;
 
@@ -39,7 +39,6 @@ export const test = base.extend<Fixtures>({
     },
 
     randomInvalidID: async ({}, use) => {
-        
         const invalidID = DataHelper.getInvalidID();
 
         await use(invalidID)

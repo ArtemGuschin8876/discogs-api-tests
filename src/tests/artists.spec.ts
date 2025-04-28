@@ -7,8 +7,8 @@ import { EntityErrors } from '../models/api.models/error.responses';
 
 test.describe('Discogs API - artists', () => {
 
-    test('Should return 200 for a valid release ID', async ({clients, randomArtistID}) => {
-        const {artistResponse} = await clients.unathorized.artistClient.getArtistById(randomArtistID);
+    test('Should return 200 for a valid release ID', async ({unathorizedClients, randomArtistID}) => {
+        const {artistResponse} = await unathorizedClients.artistClient.getArtistById(randomArtistID);
         ArtistAssertions.validateCorrectResponse(artistResponse as ArtistResponse, randomArtistID)
     });
 })
@@ -16,8 +16,8 @@ test.describe('Discogs API - artists', () => {
 test.describe('Negative test for invalid artist IDs', () => {
 
     DataHelper.getInvalidID().forEach(({invalidID, label}, index) => {
-        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({clients}) => {
-            const {artistResponse} = await clients.unathorized.artistClient.getArtistById(invalidID, {
+        test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({unathorizedClients}) => {
+            const {artistResponse} = await unathorizedClients.artistClient.getArtistById(invalidID, {
                 expectedStatusCode: 404
             });
             ArtistAssertions.validateIncorrectResponse(artistResponse as EntityErrors);
