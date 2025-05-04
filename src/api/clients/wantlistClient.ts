@@ -45,4 +45,17 @@ export class WantlistClient {
             });
     }
 
+    async deleteReleaseFromWantList(
+        username: string,
+        id: number
+    ) {
+        return await ApiHelper.sendApiRequest(
+            this.context,
+            `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
+            {
+                method: 'DELETE',
+                expectedStatusCode: 204
+            },
+        );
+    }
 }

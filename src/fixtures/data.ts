@@ -2,6 +2,8 @@ import { test as base} from '@playwright/test'
 import { DataHelper } from '../utils/data.helper'
 import { Fixtures } from '../fixtures/fixtures';
 import { ReleaseResponse } from '../models/api.models/release.response';
+import { Environment } from '../env';
+import { userInfo } from 'os';
 
 //фикстура рандом релиз, а внутри две другие фикстуры , randomRelease(randomData), randomReleaseID, randomArtistID
 export const test = base.extend<Fixtures>({
@@ -42,9 +44,27 @@ export const test = base.extend<Fixtures>({
         const invalidID = DataHelper.getInvalidID();
 
         await use(invalidID)
-    }
+    },
 
-    
+    getUserName: async ({}, use) => {
+        await use(`${Environment.USER_NAME}`)
+    },
+
+    addedReleaseID: async ({authorizedClients, randomReleaseID}, use) => {
+        await authorizedClients.wantlistClient.addReleaseToWantlist(
+            `${Environment.USER_NAME}`,
+            randomReleaseID
+        );
+
+        await use(randomReleaseID);
+    },
+
+    getCurrentWantList: async ({authorizedClients}, use) => {
+        await use(async () => {
+            const response = await authorizedClients.wantlistClient.getWantlistByUsername(`${Environment.USER_NAME}`);
+            return response.wantlist
+        })
+    }
 })
 
 

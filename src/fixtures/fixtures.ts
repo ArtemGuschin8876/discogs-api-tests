@@ -4,6 +4,7 @@ import { authorizationFixtures } from '../fixtures/auth'
 import { test as randomRelease} from '../fixtures/data'
 import { mergeTests } from '@playwright/test';
 import { ReleaseResponse } from '../models/api.models/release.response';
+import { WantlistResponse } from '../models/api.models/wantlist.response';
 
 export type Fixtures = {
     authorizedContext: APIRequestContext;
@@ -17,6 +18,9 @@ export type Fixtures = {
     randomArtistID: number;
     randomLabelID: number;
     randomInvalidID: unknown;
+    addedReleaseID: number;
+    getUserName: string
+    getCurrentWantList: () => Promise<WantlistResponse>;
 }
 
 export const test = mergeTests(authorizationFixtures, randomRelease)
