@@ -1,7 +1,11 @@
 import { APIRequestContext, APIResponse, expect } from "@playwright/test";
 import { BaseAssertions } from "../api/assertions/base.assertions";
-import { base } from "@faker-js/faker";
 
+
+
+export type ClientOptions = {
+    expectedStatusCode: number;
+}
 
 export type RequestParams = {
     expectedStatusCode?: number;
@@ -12,7 +16,11 @@ export type RequestParams = {
 
 
 export class ApiHelper {
-    static async sendApiRequest(ctx: APIRequestContext, url: string, params: RequestParams): Promise<APIResponse> {
+    static async sendApiRequest(
+        ctx: APIRequestContext, 
+        url: string, 
+        params: RequestParams
+    ): Promise<any> {
         const {
             expectedStatusCode,
             method = 'GET',
@@ -34,6 +42,10 @@ export class ApiHelper {
             expect(response).toBeOK();
         }
 
-        return response;
+        // return { responseBody: await response.json(), status: response.status() };
+        const text = await response.text();
+        const responseBody = text ? JSON.parse(text) : null;
+
+        return { responseBody, status: response.status() };
     }
 }

@@ -19,8 +19,8 @@ export type Fixtures = {
     randomLabelID: number;
     randomInvalidID: unknown;
     addedReleaseID: number;
-    getUserName: string
-    getCurrentWantList: () => Promise<WantlistResponse>;
+    userName: string
+    currentWantList: () => Promise<WantlistResponse>;
 }
 
 export const test = mergeTests(authorizationFixtures, randomRelease)

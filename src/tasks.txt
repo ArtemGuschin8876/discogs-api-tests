@@ -1,8 +1,3 @@
-//Сделать тест на wantlist POST, DELETE, GET (не оставлять ничего после тестов)
-//POST из фикстуры получаю юзер ID, добавил альбомы и в тесте же удалил через afterEach
-//DELETE в фикстуре добавить а в тесте удалить ( перед делитом создаем в фикстуре)
-
-//новый класс, в нём проверяю = сделал POST и сверить то что добавил и вернулось одинаково (имя итд)
 ********
 Authorization: OAuth oauth_consumer_key="uegEPjTnXbnEviNEYfbb", oauth_nonce="vwkweOWbcrYBtvhG9ZkpkQxr7rGKFb4k", oauth_signature="mwzLhYC90YQlQPVnXbhfefxgfVU%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1745839354", oauth_token="ABljNmGdsYkKFvwYhzxYxYbkviaNvsSjatNFaVhd", oauth_version="1.0"
 Authorization: OAuth oauth_consumer_key="uegEPjTnXbnEviNEYfbb", oauth_nonce="k7zK9LXSW5nlkULV00THCT2t5AmKH0x1", oauth_signature="DrEV2v7waFoTH9QPzV43QdI2N5o%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1745839396", oauth_token="ABljNmGdsYkKFvwYhzxYxYbkviaNvsSjatNFaVhd", oauth_version="1.0"

@@ -1,4 +1,3 @@
-import { expect } from "@playwright/test";
 import { ReleaseResponse } from "../models/api.models/release.response";
 import { faker } from '@faker-js/faker';
 

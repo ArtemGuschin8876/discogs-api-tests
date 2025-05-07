@@ -1,13 +1,9 @@
 import { APIRequestContext } from "@playwright/test";
 import { Environment } from "../../env";
 import { WantlistResponse } from "../../models/api.models/wantlist.response";
-import { ApiHelper, RequestParams } from "../../utils/api.helper";
+import { ApiHelper, ClientOptions, RequestParams } from "../../utils/api.helper";
 import { Endpoints } from "../../utils/contstants/endpoints";
 
-export type ClientOptions = {
-    expectedStatusCode?: number,
-}
-//каждый метод клиента опционально принимает этот тип
 
 export class WantlistClient {
 
@@ -19,34 +15,29 @@ export class WantlistClient {
     }
 
     async getWantlistByUsername(
-            username: string, 
-            params?: RequestParams
-        ): Promise<{ wantlist : WantlistResponse,  status: number}> {
-    
-             const response = await ApiHelper.sendApiRequest(
+        username: string, 
+        params?: RequestParams
+    ): Promise<{ responseBody: WantlistResponse,  status: number}> {
+            const response = await ApiHelper.sendApiRequest(
                 this.context, 
                 `${this.WanlistUrl}${username}/${Endpoints.WANTS}`,
-                {
-                    ...params, 
-                    method: 'GET',
-                }
-            );
-            return {
-                wantlist: await response.json(),
-                status: response.status(),
-            };
+                { ...params, method: 'GET'}
+        );
+
+        return response;
     };
 
     async addReleaseToWantlist(
         username: string,
-        id: number
-    ) {
+        id: number,
+        params?: RequestParams
+    ): Promise<{ responseBody: WantlistResponse, status: number}> {
         return await ApiHelper.sendApiRequest(
             this.context,
             `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
-            {
-                method: 'PUT'
-            });
+            { ...params ,method: 'PUT'}
+        );
+       
     }
 
     async deleteReleaseFromWantList(
@@ -54,16 +45,15 @@ export class WantlistClient {
         id: number,
         options?: ClientOptions
     ) {
-        const expectedStatusCode = options?.expectedStatusCode || 204
-        //если expectedStatusCode передан внутри Options то сохраняю именно его, иначе 204 сохраняю
+        // const expectedStatusCode = options?.expectedStatusCode ?? 204;
 
         return await ApiHelper.sendApiRequest(
             this.context,
             `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
             {
                 method: 'DELETE',
-                expectedStatusCode: expectedStatusCode, //expectedStatusCode
-                returnType : both or body (returnType from tests)
+                expectedStatusCode: 204,
+                ...options
             },
         );
     }
