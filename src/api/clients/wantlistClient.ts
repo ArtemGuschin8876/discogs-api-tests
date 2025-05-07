@@ -4,6 +4,10 @@ import { WantlistResponse } from "../../models/api.models/wantlist.response";
 import { ApiHelper, RequestParams } from "../../utils/api.helper";
 import { Endpoints } from "../../utils/contstants/endpoints";
 
+export type ClientOptions = {
+    expectedStatusCode?: number,
+}
+//каждый метод клиента опционально принимает этот тип
 
 export class WantlistClient {
 
@@ -47,14 +51,19 @@ export class WantlistClient {
 
     async deleteReleaseFromWantList(
         username: string,
-        id: number
+        id: number,
+        options?: ClientOptions
     ) {
+        const expectedStatusCode = options?.expectedStatusCode || 204
+        //если expectedStatusCode передан внутри Options то сохраняю именно его, иначе 204 сохраняю
+
         return await ApiHelper.sendApiRequest(
             this.context,
             `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
             {
                 method: 'DELETE',
-                expectedStatusCode: 204
+                expectedStatusCode: expectedStatusCode, //expectedStatusCode
+                returnType : both or body (returnType from tests)
             },
         );
     }
