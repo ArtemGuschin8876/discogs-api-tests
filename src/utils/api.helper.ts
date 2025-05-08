@@ -42,7 +42,6 @@ export class ApiHelper {
             expect(response).toBeOK();
         }
 
-        // return { responseBody: await response.json(), status: response.status() };
         const text = await response.text();
         const responseBody = text ? JSON.parse(text) : null;
 

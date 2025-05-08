@@ -1,7 +1,7 @@
 import { APIRequestContext } from "@playwright/test";
 import { Environment } from "../../env";
 import { Endpoints } from "../../utils/contstants/endpoints";
-import { ApiHelper, RequestParams } from "../../utils/api.helper";
+import { ApiHelper, ClientOptions, RequestParams } from "../../utils/api.helper";
 import { ReleaseResponse } from "../../models/api.models/release.response";
 import { ReleaseRatingResponse } from "../../models/api.models/release.rating.response";
 import { EntityErrors } from "../../models/api.models/error.responses";
@@ -19,62 +19,33 @@ export class ReleaseClient {
 
     async getReleaseById(
         id: unknown, 
-        params?: RequestParams
-    ): Promise<{ releaseResponse : ReleaseResponse | EntityErrors,  status: number}> {
+        options?: ClientOptions,
+    ): Promise<{ responseBody : ReleaseResponse | EntityErrors,  status: number}> {
 
          const response = await ApiHelper.sendApiRequest(
             this.context, 
             `${this.url}${id}`,
-            {
-                ...params, 
+            {    
                 method: 'GET',
+                ...options,
             }
         );
-        return {
-            releaseResponse: await response.json(),
-            status: response.status(),
-        };
+        return response
     };
 
     async getReleaseRatingByReleaseId(
         id:unknown,
-        params?: RequestParams
-    ): Promise<{releaseRatinResponse: ReleaseRatingResponse, status: number}> {
+        options?: ClientOptions
+    ): Promise<{responseBody: ReleaseRatingResponse, status: number}> {
 
         const response = await ApiHelper.sendApiRequest(
             this.context,
             `${this.url}${id}/${Endpoints.RELEASE_RATING}`,
-            {
-                ...params,
+            { 
                 method: 'GET',
+                ...options
             },
         )
-        return {
-            releaseRatinResponse: await response.json(),
-            status: response.status(),
-        };
+        return response
     };
-
-    async getReleaseStats(
-        id: unknown,
-        params?: RequestParams
-    ): Promise<{releaseStats: ReleaseStats, status: number}> {
-
-        const response = await ApiHelper.sendApiRequest(
-            this.context,
-            `${this.url}${id}/${Endpoints.STATS}`,
-           {
-                ...params,
-                method: 'GET'
-           },  
-        );
-
-        return {
-            releaseStats: await response.json(),
-            status: response.status(),
-        };
-    };
-
-
-
 }

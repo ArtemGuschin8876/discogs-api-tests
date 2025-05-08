@@ -10,6 +10,4 @@ export class Environment {
     public static CONSUMER_SECRET=process.env.CONSUMER_SECRET
     public static OAUTH_TOKEN=process.env.OAUTH_TOKEN
     public static OAUTH_TOKEN_SECRET=process.env.OAUTH_TOKEN_SECRET
-
-
 }

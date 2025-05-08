@@ -16,26 +16,31 @@ export class WantlistClient {
 
     async getWantlistByUsername(
         username: string, 
-        params?: RequestParams
+        options?: ClientOptions
     ): Promise<{ responseBody: WantlistResponse,  status: number}> {
             const response = await ApiHelper.sendApiRequest(
                 this.context, 
                 `${this.WanlistUrl}${username}/${Endpoints.WANTS}`,
-                { ...params, method: 'GET'}
+                {   
+                    method: 'GET',
+                    ...options
+                }
         );
-
         return response;
     };
 
     async addReleaseToWantlist(
         username: string,
         id: number,
-        params?: RequestParams
+        options?: ClientOptions
     ): Promise<{ responseBody: WantlistResponse, status: number}> {
         return await ApiHelper.sendApiRequest(
             this.context,
             `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,
-            { ...params ,method: 'PUT'}
+            { 
+                method: 'PUT',
+                ...options
+            },
         );
        
     }
@@ -45,8 +50,6 @@ export class WantlistClient {
         id: number,
         options?: ClientOptions
     ) {
-        // const expectedStatusCode = options?.expectedStatusCode ?? 204;
-
         return await ApiHelper.sendApiRequest(
             this.context,
             `${this.WanlistUrl}${username}/${Endpoints.WANTS}/${id}`,

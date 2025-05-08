@@ -1,7 +1,7 @@
 import { APIRequestContext, APIResponse } from "@playwright/test"
 import { Environment } from "../../env";
 import { Endpoints } from "../../utils/contstants/endpoints";
-import { ApiHelper, RequestParams } from "../../utils/api.helper";
+import { ApiHelper, ClientOptions, RequestParams } from "../../utils/api.helper";
 import { ArtistResponse } from "../../models/api.models/artist.response";
 import { EntityErrors } from "../../models/api.models/error.responses";
 
@@ -16,19 +16,16 @@ export class ArtistClient {
 
     async getArtistById(
             id: unknown, 
-            params?: RequestParams
-        ): Promise<{ artistResponse : ArtistResponse | EntityErrors,  status: number}> {
+            options?: ClientOptions
+        ): Promise<{ responseBody : ArtistResponse | EntityErrors,  status: number}> {
              const response = await ApiHelper.sendApiRequest(
                 this.context, 
                 `${this.url}${id}`,
                 {
-                    ...params, 
                     method: 'GET',
+                    ...options
                 }
             );
-            return {
-                artistResponse: await response.json(),
-                status: response.status(),
-            };
+            return response;
         }; 
 }

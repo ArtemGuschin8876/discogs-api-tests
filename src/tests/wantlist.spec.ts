@@ -1,5 +1,4 @@
 import { WantlistAssertions } from '../api/assertions/wantlist.assertions';
-import { Environment } from '../env';
 import { test } from '../fixtures/fixtures';
 import { WantlistResponse } from '../models/api.models/wantlist.response';
 

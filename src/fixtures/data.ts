@@ -4,7 +4,6 @@ import { Fixtures } from '../fixtures/fixtures';
 import { ReleaseResponse } from '../models/api.models/release.response';
 import { Environment } from '../env';
 
-//фикстура рандом релиз, а внутри две другие фикстуры , randomRelease(randomData), randomReleaseID, randomArtistID
 export const test = base.extend<Fixtures>({
     randomReleases: async ({unathorizedClients}, use) => {
         const response = await unathorizedClients.labelsClient.getLabelReleases();
@@ -24,25 +23,19 @@ export const test = base.extend<Fixtures>({
     },
 
     randomArtistID: async ({unathorizedClients, randomRelease}, use) => {
-        const { releaseResponse } = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
-        const fullRelease = releaseResponse as ReleaseResponse;
+        const { responseBody } = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
+        const fullRelease = responseBody as ReleaseResponse;
         const artistID = fullRelease.artists[0].id;
 
         await use(artistID)
     },
 
     randomLabelID: async ({unathorizedClients, randomRelease}, use) => {
-        const {releaseResponse} = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
-        const fullRelease = releaseResponse as ReleaseResponse;
+        const {responseBody} = await unathorizedClients.releaseClient.getReleaseById(randomRelease.id)
+        const fullRelease = responseBody as ReleaseResponse;
         const labelID = fullRelease.labels[0].id;
 
         await use(labelID)
-    },
-
-    randomInvalidID: async ({}, use) => {
-        const invalidID = DataHelper.getInvalidID();
-
-        await use(invalidID)
     },
 
     userName: async ({}, use) => {
