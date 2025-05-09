@@ -42,9 +42,13 @@ export class ApiHelper {
             expect(response).toBeOK();
         }
 
-        const text = await response.text();
-        const responseBody = text ? JSON.parse(text) : null;
+        let responseBody;
 
+        try {
+            responseBody = await response.json();
+        } catch(SyntaxError) {
+            console.log('Empty response body');
+        }
         return { responseBody, status: response.status() };
     }
 }
