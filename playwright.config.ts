@@ -12,7 +12,22 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './src/tests',
+  projects: [
+    {
+      name: 'ui',
+      testDir: './src/ui/tests',
+      use: {
+        headless: false,
+        ...devices['Desktop Chrome'],
+      },
+    },
+
+    {
+      name: 'api',
+      testDir: './src/tests',
+    },
+
+  ],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -32,11 +47,11 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  // projects: [
+  //   {
+  //     name: 'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   },
 
     // {
     //   name: 'firefox',
@@ -67,7 +82,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  // ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
