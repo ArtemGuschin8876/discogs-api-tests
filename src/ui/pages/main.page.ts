@@ -4,11 +4,14 @@ import { Environment } from "../../env";
 
 export class MainPage extends BasePage{
 
+    private urlMainPage: string
     private buttons: LocatorMap
     private elements: LocatorMap
 
     constructor(page: Page) {
         super(page);
+
+        this.urlMainPage = `${Environment.BASE_UI_URL}`
 
         this.buttons = {
             loginBtn: this.page.locator('#log_in_link'),
@@ -23,7 +26,7 @@ export class MainPage extends BasePage{
     }
 
     async goto() {
-        await this.gotoByUrl(`${Environment.BASE_UI_URL}`);
+        await this.gotoByUrl(this.urlMainPage);
     }
 
     async acceptCookie() {
@@ -38,6 +41,7 @@ export class MainPage extends BasePage{
     }
 
     async verifyUserAfterLogin(userName: string) {
+        await this.page.waitForSelector('button[aria-label^="Logged in as"]', { timeout: 5000} )
         expect(this.elements.userButton).toHaveAttribute('aria-label', `Logged in as ${userName}`)
     }
     

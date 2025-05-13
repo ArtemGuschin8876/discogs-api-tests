@@ -4,6 +4,7 @@ export enum Endpoints {
     USERS = 'users/',
     WANTS = 'wants',
     ARTISTS = 'artists/',
+    LOGIN = 'login',
     LABELS = 'labels/',
     RELEASE_RATING ='rating',
 }

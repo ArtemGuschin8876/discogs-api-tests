@@ -17,7 +17,7 @@ export default defineConfig({
       name: 'ui',
       testDir: './src/ui/tests',
       use: {
-        headless: false,
+        headless: true,
         ...devices['Desktop Chrome'],
       },
     },

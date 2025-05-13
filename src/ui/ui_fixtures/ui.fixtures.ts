@@ -1,15 +1,10 @@
-import { test as base } from '@playwright/test';
-import { Environment } from '../../env';
+import { PageManager } from "../pages/page.manager";
 
-type UIFixtures = {
-  uiUserName: string;
-};
+ export type UIFixtures = {
 
-export const test = base.extend<UIFixtures>({
-    uiUserName: async ({}, use) => {
-    await use(`${Environment.USER_NAME}`);
-  },
-});
+      uiUserName: string;
+      pageManager: PageManager;
+      
+  };
 
-export const expect = test.expect;
 

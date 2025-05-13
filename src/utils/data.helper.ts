@@ -20,5 +20,14 @@ export class DataHelper {
             { label: 'symbol', invalidID: faker.string.symbol({min: 1, max: 5}) },
         ];
     }; 
+
+
+    // static getInvalidUsernameAndPassword(): string[] {
+    //     return [
+    //         {
+    //             userName: faker.,
+    //         }
+    //     ];
+    // }
 }
 
