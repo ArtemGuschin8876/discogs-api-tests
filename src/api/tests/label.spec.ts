@@ -1,8 +1,8 @@
-import { test } from '../fixtures/fixtures';
-import { LabelAssertions } from '../api/assertions/label.assertions';
-import { LabelResponse } from '../models/api.models/label.response';
-import { DataHelper } from '../utils/data.helper';
-import { EntityErrors } from '../models/api.models/error.responses';
+import { test } from '../../fixtures/fixtures';
+import { LabelAssertions } from '../assertions/label.assertions';
+import { LabelResponse } from '../../models/api.models/label.response';
+import { DataHelper } from '../../utils/api.utils/data.helper';
+import { EntityErrors } from '../../models/api.models/error.responses';
 
 
 

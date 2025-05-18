@@ -1,8 +1,8 @@
 import { APIRequestContext } from "@playwright/test";
 import { Environment } from "../../env";
 import { WantlistResponse } from "../../models/api.models/wantlist.response";
-import { ApiHelper, ClientOptions, RequestParams } from "../../utils/api.helper";
-import { Endpoints } from "../../utils/contstants/endpoints";
+import { ApiHelper, ClientOptions, RequestParams } from "../../utils/api.utils/api.helper";
+import { Endpoints } from "../../utils/constants/endpoints";
 
 
 export class WantlistClient {

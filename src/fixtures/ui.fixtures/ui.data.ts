@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test';
 import { Environment } from '../../env';
-import { PageManager } from '../pages/page.manager';
-import { UIFixtures } from './ui.fixtures'
+import { PageManager } from '../../ui/pages/page.manager';
+import { UIFixtures } from '../fixtures'
 
 export const test = base.extend<UIFixtures>({
     

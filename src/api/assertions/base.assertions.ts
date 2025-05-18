@@ -1,5 +1,5 @@
 import { APIResponse, expect } from "@playwright/test";
-import { TextErrors } from "../../utils/contstants/text.errors";
+import { TextErrors } from "../../utils/constants/api.constants/text.errors";
 
 export class BaseAssertions {
 

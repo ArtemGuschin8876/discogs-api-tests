@@ -1,8 +1,8 @@
-import { test } from '../fixtures/fixtures';
-import { ArtistAssertions } from '../api/assertions/artist.assertions';
-import { DataHelper } from '../utils/data.helper';
-import { ArtistResponse } from '../models/api.models/artist.response';
-import { EntityErrors } from '../models/api.models/error.responses';
+import { test } from '../../fixtures/fixtures';
+import { ArtistAssertions } from '../assertions/artist.assertions';
+import { DataHelper } from '../../utils/api.utils/data.helper';
+import { ArtistResponse } from '../../models/api.models/artist.response';
+import { EntityErrors } from '../../models/api.models/error.responses';
 
 
 test.describe('Discogs API - artists', () => {

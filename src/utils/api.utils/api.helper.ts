@@ -1,5 +1,5 @@
-import { APIRequestContext, APIResponse, expect } from "@playwright/test";
-import { BaseAssertions } from "../api/assertions/base.assertions";
+import { APIRequestContext, expect } from "@playwright/test";
+import { BaseAssertions } from "../../api/assertions/base.assertions";
 
 
 

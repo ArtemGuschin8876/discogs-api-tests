@@ -1,29 +1,18 @@
-import { test, expect } from '../ui_fixtures/ui.data';
-import { PageManager } from "../pages/page.manager";
+import { test } from '../../fixtures/ui.fixtures/ui.data';
 
+test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Check login with correct and incorrect credentials', async () => {
+  test('Login flow with valid credentials', async ({ pageManager, uiUserName }) => {
+    await pageManager.loginPage.goto();
+    await pageManager.loginPage.enterLoginCredentialsAndClickContinue('positive');
 
-    test('Login flow with valid credentials', async ({page, uiUserName}) => {
-        const pages = new PageManager(page);
+    await pageManager.mainPage.verifyUserAfterLogin(uiUserName);
+  });
 
-        await pages.mainPage.goto();
-        await pages.mainPage.acceptCookie();
-        await pages.mainPage.clickOnLoginButtonAndVerifyRedirect();
-
-        await pages.loginPage.enterLoginCredentialsAndClickContinue('positive');
-
-        await pages.mainPage.verifyUserAfterLogin(uiUserName);
-    });
-
-    test('Login flow with unknown credentials', async({pageManager}) => {
-
-        await pageManager.loginPage.goto();
-        await pageManager.loginPage.enterLoginCredentialsAndClickContinue('negative');
-        await pageManager.loginPage.checkErrorMessage();
-
-    })
-})
-
-
-
+  test('Login flow with unknown credentials', async ({ pageManager }) => {
+    await pageManager.loginPage.goto();
+    await pageManager.loginPage.enterLoginCredentialsAndClickContinue('negative');
+    await pageManager.loginPage.checkErrorMessage();
+  });
+});

@@ -1,6 +1,6 @@
-import { WantlistAssertions } from '../api/assertions/wantlist.assertions';
-import { test } from '../fixtures/fixtures';
-import { WantlistResponse } from '../models/api.models/wantlist.response';
+import { WantlistAssertions } from '../assertions/wantlist.assertions';
+import { test } from '../../fixtures/fixtures';
+import { WantlistResponse } from '../../models/api.models/wantlist.response';
 
 
 test.describe('Discogs API - wantlist',  () => {

@@ -1,11 +1,3 @@
-********
-Authorization: OAuth oauth_consumer_key="uegEPjTnXbnEviNEYfbb", oauth_nonce="vwkweOWbcrYBtvhG9ZkpkQxr7rGKFb4k", oauth_signature="mwzLhYC90YQlQPVnXbhfefxgfVU%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1745839354", oauth_token="ABljNmGdsYkKFvwYhzxYxYbkviaNvsSjatNFaVhd", oauth_version="1.0"
-Authorization: OAuth oauth_consumer_key="uegEPjTnXbnEviNEYfbb", oauth_nonce="k7zK9LXSW5nlkULV00THCT2t5AmKH0x1", oauth_signature="DrEV2v7waFoTH9QPzV43QdI2N5o%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1745839396", oauth_token="ABljNmGdsYkKFvwYhzxYxYbkviaNvsSjatNFaVhd", oauth_version="1.0"
-
-Pages manager будет как clients (войти в личный кабинет) 
-ПЕйджы из пейдж менеджера 
-
-Через personal access token 
 //TestApp
 //https://example.com
 //https://example.com/callback
