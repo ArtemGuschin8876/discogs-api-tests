@@ -25,7 +25,7 @@ jobs:
       - name: 🧪 Install Chromium only
         run: npx playwright install chromium
 
-      - name: ▶️ Run UI tests (only)
+      - name: ▶️ Run UI tests (with Allure)
         run: npx playwright test src/ui/tests
         env:
           BASE_UI_URL: https://www.discogs.com/
@@ -33,3 +33,12 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           LABEL_ID: '681346'
+
+      - name: 📊 Generate Allure report
+        run: npx allure generate --clean ./allure-results
+
+      - name: 📤 Upload Allure report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
