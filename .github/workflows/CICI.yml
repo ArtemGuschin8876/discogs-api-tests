@@ -32,3 +32,4 @@ jobs:
           BASE_URL: https://api.discogs.com/
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          LABEL_ID: '681346'
