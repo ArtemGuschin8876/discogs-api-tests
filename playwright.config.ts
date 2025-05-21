@@ -27,11 +27,6 @@ export default defineConfig({
       name: 'api',
       testDir: './src/api/tests',
     },
-
-    {
-      name: 'mock',
-      testDir: './src/mock/tests',
-    },
   ],
   /* Run tests in files in parallel */
   fullyParallel: true,
