@@ -6,29 +6,22 @@ on:
 
 jobs:
   test:
-    name: Run tests with storageState
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: ⬇️ Download state.json
-        uses: actions/download-artifact@v4
-        with:
-          name: storage
-          path: .
-
-      - name: 🟦 Setup Node.js
+      - name: 🟦 Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: 📦 Install dependencies
+      - name: 📦 Install deps
         run: npm ci
 
-      - name: 🧪 Install Chromium only
+      - name: 🧪 Install Chromium
         run: npx playwright install chromium
 
-      - name: ▶️ Run Playwright tests
+      - name: ▶️ Run tests
         run: npx playwright test
