@@ -11,7 +11,7 @@ async function globalSetup(config: FullConfig) {
     return;
   }
 
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
   // const continueButton = page.locator('button[data-action-primary=true]');
