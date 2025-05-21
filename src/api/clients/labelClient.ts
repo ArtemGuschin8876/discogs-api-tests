@@ -26,6 +26,9 @@ export class LabelCLient {
       method: 'GET',
       ...options,
     });
+
+    console.log('RESPONSE STATUS:', response.status());
+    console.log('RESPONSE BODY:', await response.text());
     return response;
   }
 
