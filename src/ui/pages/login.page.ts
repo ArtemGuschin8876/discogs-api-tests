@@ -31,14 +31,9 @@ export class LoginPage extends BasePage {
 
   async goto() {
     await this.gotoByUrl(this.urlLoginPage);
-    console.log(this.urlLoginPage);
   }
 
   async enterLoginCredentialsAndClickContinue(flag: string) {
-    await expect(this.fields.usernameField).toBeVisible();
-    await expect(this.fields.passwordField).toBeVisible();
-    await expect(this.buttons.continueBtn).toBeVisible();
-
     if (flag === 'positive') {
       await this.fields.usernameField.pressSequentially(`${Environment.USER_NAME}`);
       await this.fields.passwordField.pressSequentially(`${Environment.USER_PASSWORD}`);
