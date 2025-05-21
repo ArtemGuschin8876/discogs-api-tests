@@ -22,8 +22,8 @@ async function globalSetup(config: FullConfig) {
   const continueBtn = page.locator('button[name=action]');
 
   await page.goto('https://www.discogs.com/login');
-  await page.fill('#username', `${Environment.USER_NAME}`);
-  await page.fill('#password', `${Environment.USER_PASSWORD}`);
+  await page.fill('#username', process.env.USER_NAME!);
+  await page.fill('#password', process.env.USER_PASSWORD!);
   await continueBtn.click();
 
   await page.waitForURL('https://www.discogs.com/my');
