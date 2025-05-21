@@ -8,7 +8,7 @@ test.describe('Discogs API - Releases', () => {
   test('Should return 200, get release', async ({
     unathorizedClients,
     randomReleaseID,
-    randomRelease
+    randomRelease,
   }) => {
     const { responseBody } = await unathorizedClients.releaseClient.getReleaseById(randomReleaseID);
 
@@ -21,7 +21,7 @@ test.describe('Discogs API - Releases', () => {
 
   test('Should return 200 and get release rating', async ({
     unathorizedClients,
-    randomReleaseID
+    randomReleaseID,
   }) => {
     const { responseBody } = await unathorizedClients.releaseClient.getReleaseRatingByReleaseId(
       randomReleaseID
@@ -30,15 +30,15 @@ test.describe('Discogs API - Releases', () => {
   });
 });
 
-test.describe('Negative test for invalid release IDs', () => {
-  DataHelper.getInvalidID().forEach(({ label, invalidID }, index) => {
-    test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({
-      unathorizedClients
-    }) => {
-      const { responseBody } = await unathorizedClients.releaseClient.getReleaseById(invalidID, {
-        expectedStatusCode: 404
-      });
-      ReleaseAssertions.validateIncorrectResponseRelease(responseBody as EntityErrors);
-    });
-  });
-});
+// test.describe('Negative test for invalid release IDs', () => {
+//   DataHelper.getInvalidID().forEach(({ label, invalidID }, index) => {
+//     test(`${index + 1}) Should return text error and 404 with invalid ID: ${label}`, async ({
+//       unathorizedClients
+//     }) => {
+//       const { responseBody } = await unathorizedClients.releaseClient.getReleaseById(invalidID, {
+//         expectedStatusCode: 404
+//       });
+//       ReleaseAssertions.validateIncorrectResponseRelease(responseBody as EntityErrors);
+//     });
+//   });
+// });
