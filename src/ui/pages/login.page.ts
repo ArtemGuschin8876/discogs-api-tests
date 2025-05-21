@@ -31,6 +31,7 @@ export class LoginPage extends BasePage {
 
   async goto() {
     await this.gotoByUrl(this.urlLoginPage);
+    console.log(this.urlLoginPage);
   }
 
   async enterLoginCredentialsAndClickContinue(flag: string) {
