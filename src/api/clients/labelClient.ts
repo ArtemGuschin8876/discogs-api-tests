@@ -8,7 +8,10 @@ import { LabelResponse } from '../../models/api.models/label.response';
 export class LabelCLient {
   private context: APIRequestContext;
   private getReleasesUrl =
-    `${Environment.BASE_URL}${Endpoints.LABELS}${Environment.LABEL_ID}/${Endpoints.RELEASES}`.replace(/\/$/, '');
+    `${Environment.BASE_URL}${Endpoints.LABELS}${Environment.LABEL_ID}/${Endpoints.RELEASES}`.replace(
+      /\/$/,
+      ''
+    );
   private getLabelUrl = `${Environment.BASE_URL}${Endpoints.LABELS}`;
 
   constructor(context: APIRequestContext) {
@@ -21,12 +24,14 @@ export class LabelCLient {
   ): Promise<{ responseBody: LabelResponse | EntityErrors; status: number }> {
     const response = await ApiHelper.sendApiRequest(this.context, `${this.getLabelUrl}${id}`, {
       method: 'GET',
-      ...options
+      ...options,
     });
     return response;
   }
 
   async getLabelReleases(): Promise<APIResponse> {
+    console.log('URL:', this.getReleasesUrl);
+
     return await this.context.get(this.getReleasesUrl);
   }
 }

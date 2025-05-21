@@ -26,5 +26,5 @@ jobs:
       - name: ▶️ Run Playwright tests
         run: npx playwright test
         env:
-          API_BASE_URL: https://api.discogs.com
+          BASE_URL: https://api.discogs.com
           UI_BASE_URL: https://www.discogs.com
