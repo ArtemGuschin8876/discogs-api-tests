@@ -1,4 +1,4 @@
-name: CI
+name: Playwright CI
 
 on:
   push:
@@ -6,25 +6,29 @@ on:
 
 jobs:
   test:
+    name: Run tests with storageState
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: ⬇️ Download storageState.json
+        uses: actions/download-artifact@v3
+        with:
+          name: storage
+          path: .
+
+      - name: 🟦 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: Install deps
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Install browsers
-        run: npx playwright install --with-deps
+      - name: 🧪 Install Chromium only
+        run: npx playwright install chromium
 
-      - name: Run tests
+      - name: ▶️ Run Playwright tests
         run: npx playwright test
-        env:
-          USER_NAME: ${{ secrets.USER_NAME }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
