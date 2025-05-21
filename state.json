@@ -1,0 +1,229 @@
+{
+  "cookies": [
+    {
+      "name": "__cf_bm",
+      "value": "r4I2R6xFLLQVlTdTesbaKEAOoiapzSFcNQkpSFvKaVk-1747755028-1.0.1.1-zFx3oQXjqHWVS3On2eNkj_inMgy.5bRSonQxoCUN7g4maDT5F5wSHmwyJ9M8f7bVAQoyBjBUCO7ISMFp8_82x89VM7waW9X5jMu2.xSRR48",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1747756829.486284,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "did",
+      "value": "s%3Av0%3A57345481-5d95-4ffb-b026-ac03d28e1c8b%3A16aceac180cd8097a4e2a61d67790e179af7848a210a9d4bf01dd348f979e0c7.P%2FYAYufN6m%2BLm0PNe0BTfZTqgUNcsIe%2F787Hr7ET6kM",
+      "domain": "login.discogs.com",
+      "path": "/",
+      "expires": 1779312631.382382,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "did_compat",
+      "value": "s%3Av0%3A57345481-5d95-4ffb-b026-ac03d28e1c8b%3A16aceac180cd8097a4e2a61d67790e179af7848a210a9d4bf01dd348f979e0c7.P%2FYAYufN6m%2BLm0PNe0BTfZTqgUNcsIe%2F787Hr7ET6kM",
+      "domain": "login.discogs.com",
+      "path": "/",
+      "expires": 1779312631.382629,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "auth0",
+      "value": "s%3A8Ciouz5be0Igz24uX5TqwkH6Vbae4dOW.2yw4uuAwTb7u6oL1PYP6UeoujAeV7U8jw%2FKlAVjbLjc",
+      "domain": "login.discogs.com",
+      "path": "/",
+      "expires": 1756395032.623422,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "auth0_compat",
+      "value": "s%3A8Ciouz5be0Igz24uX5TqwkH6Vbae4dOW.2yw4uuAwTb7u6oL1PYP6UeoujAeV7U8jw%2FKlAVjbLjc",
+      "domain": "login.discogs.com",
+      "path": "/",
+      "expires": 1756395032.623642,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ck_username",
+      "value": "Phonker123",
+      "domain": ".www.discogs.com",
+      "path": "/",
+      "expires": 1782315033.109368,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "language2",
+      "value": "en",
+      "domain": ".www.discogs.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sid",
+      "value": "78e1fcf73e8a9c94b406b75ada20ba51",
+      "domain": ".www.discogs.com",
+      "path": "/",
+      "expires": 1782315033.542596,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ppc_onboard_prompt",
+      "value": "seen",
+      "domain": ".www.discogs.com",
+      "path": "/",
+      "expires": 1748359833.542828,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "session",
+      "value": "\"xdaWogCq+Ng6j4L3hD6wIVNC0CM=?_expires=MTc2MzMwNzAzMg==&auth_token=Im44d1UwQTZKdzZsNlY2c1ZweHZFS0hudmIyIg==&created_at=IjIwMjUtMDUtMjBUMTU6MzA6MzIuMDU2NTkyIg==&idp%3Auser_id=MjU2MTExMDU=\"",
+      "domain": ".www.discogs.com",
+      "path": "/",
+      "expires": 1763307033.542866,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Tue+May+20+2025+19%3A30%3A34+GMT%2B0400+(Georgia+Standard+Time)&version=202503.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=f157110f-60a7-46a6-97b6-1264d51a7345&interactionCount=0&isAnonUser=1&landingPath=https%3A%2F%2Fwww.discogs.com%2Fmy&groups=C0001%3A1%2CC0004%3A1%2CC0003%3A1%2CC0002%3A1%2CC0005%3A1",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1763307034,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_fbp",
+      "value": "fb.1.1747755035582.355743556814628772",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1755531035,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "value": "2201bda1-cb97-4a2a-b868-87dab60c141c",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1779291035,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_user_id",
+      "value": "25611105",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1779291035,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_hjSessionUser_1817499",
+      "value": "eyJpZCI6IjU5NTJlYjgwLThlNjgtNWE2Zi04NjIyLWEzNjgyMDE5NDVmNyIsImNyZWF0ZWQiOjE3NDc3NTUwMzU4MTgsImV4aXN0aW5nIjpmYWxzZX0=",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1779291035,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_hjSession_1817499",
+      "value": "eyJpZCI6ImNkMjZlMjIwLWIyYWQtNGMyYy05MGI1LTE1MzgxZDQxYTMxNCIsImMiOjE3NDc3NTUwMzU4MTksInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MX0=",
+      "domain": ".discogs.com",
+      "path": "/",
+      "expires": 1747756835,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_hjHasCachedUserAttributes",
+      "value": "true",
+      "domain": "www.discogs.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.discogs.com",
+      "localStorage": [
+        {
+          "name": "lastExternalReferrerTime",
+          "value": "1747755035579"
+        },
+        {
+          "name": "gist.web.userToken",
+          "value": "{\"value\":\"25611105\",\"expiry\":\"2025-06-19T15:30:35.796Z\"}"
+        },
+        {
+          "name": "dsAutosaveData",
+          "value": "{}"
+        },
+        {
+          "name": "_hjUserAttributes",
+          "value": "eyJhdHRyaWJ1dGVzIjp7ImNvbGxlY3Rpb25Db3VudCI6OCwiZGlzY29nc0lEIjoyNTYxMTEwNSwibGFuZ3VhZ2VDb2RlIjoiZW4iLCJsb2dnZWRJbiI6dHJ1ZSwib3JkZXJDb3VudCI6MCwicHVyY2hhc2VDb3VudCI6MCwic3VibWlzc2lvbkNvdW50IjowLCJ3YW50bGlzdENvdW50IjoyfSwidXNlcklkIjpudWxsfQ=="
+        },
+        {
+          "name": "topicsLastReferenceTime",
+          "value": "1747755035586"
+        },
+        {
+          "name": "lastExternalReferrer",
+          "value": "empty"
+        },
+        {
+          "name": "_gcl_ls",
+          "value": "{\"schema\":\"gcl\",\"version\":1,\"gcl_ctr\":{\"value\":{\"value\":0,\"creationTimeMs\":1747755036067},\"expires\":1755531036067}}"
+        },
+        {
+          "name": "gist.web.guestUserToken",
+          "value": "{\"value\":\"6776bfbd-14a8-4dcb-946f-9845538ce54c\",\"expiry\":\"2026-05-20T15:30:35.784Z\"}"
+        },
+        {
+          "name": "debug",
+          "value": ""
+        },
+        {
+          "name": "ajs_user_id",
+          "value": "\"25611105\""
+        },
+        {
+          "name": "ajs_user_traits",
+          "value": "{\"user_locale\":\"en\",\"collection_count\":8,\"wantlist_count\":2,\"order_count\":0,\"purchase_count\":0,\"submission_count\":0,\"consent_groups\":\",C0001,C0004,C0003,C0002,C0005,\"}"
+        },
+        {
+          "name": "ajs_anonymous_id",
+          "value": "\"2201bda1-cb97-4a2a-b868-87dab60c141c\""
+        }
+      ]
+    }
+  ]
+}
