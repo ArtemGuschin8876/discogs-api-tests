@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import { test as base, expect } from '@playwright/test';
 import { DataHelper } from '../../utils/api.utils/data.helper';
 import { Fixtures } from '../fixtures';
 import { ReleaseResponse } from '../../models/api.models/release.response';
@@ -34,6 +34,7 @@ export const test = base.extend<Fixtures>({
 
   randomFullRelease: async ({ unathorizedClients, randomReleaseID }, use) => {
     const { responseBody } = await unathorizedClients.releaseClient.getReleaseById(randomReleaseID);
+    //expect title.response.body  вместо if
     if ('title' in responseBody) {
       await use(responseBody);
     } else {

@@ -8,16 +8,8 @@ export class WantlistPage extends BasePage {
 
   private elements: LocatorMap = {
     tabelOfReleases: this.page.locator('.release_list_table'),
-    releasesFromTable: this.page.locator('.release_list_table tbody tr')
+    releasesFromTable: this.page.locator('.release_list_table tbody tr'),
   };
-
-  // private attributeRelease: LocatorMap = {
-  //   image: ,
-  //   artistTitle:,
-  //   format:,
-  //   year:,
-
-  // }
 
   constructor(page: Page) {
     super(page);
@@ -31,16 +23,4 @@ export class WantlistPage extends BasePage {
   async checkWantlistPageTitle() {
     await expect(this.page).toHaveTitle(/My Wantlist/i);
   }
-
-  // async verifyAllReleasesStructure() {
-  //   await expect(this.elements.tabelOfReleases).toBeVisible();
-
-  //   const count = await this.elements.releasesFromTable.count();
-
-  //   for (let i = 0; i < count; i++) {
-  //     const release = this.elements.releasesFromTable.nth(i);
-
-  //     await expect()
-  //   }
-  // }
 }

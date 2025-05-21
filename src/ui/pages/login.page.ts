@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { BasePage, LocatorMap } from './base.page';
+import { BasePage } from './base.page';
 import { Environment } from '../../env';
 import { Endpoints } from '../../utils/constants/endpoints';
 import { UIDataHelper } from '../../utils/ui.utils/ui.data.helper';

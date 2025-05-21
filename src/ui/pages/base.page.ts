@@ -19,6 +19,7 @@ export abstract class BasePage {
 
   async acceptCookie() {
     const acceptCookies = this.page.locator(this.acceptCookiesLocatorText);
+    await acceptCookies.waitFor({state: 'visible', timeout: 5000}).catch(() => {});
 
     if (await acceptCookies.isVisible()) {
       await acceptCookies.click();

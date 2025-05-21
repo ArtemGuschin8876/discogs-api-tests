@@ -6,20 +6,22 @@ import { ReleaseResponse } from '../../models/api.models/release.response';
 import { UIDataHelper } from '../../utils/ui.utils/ui.data.helper';
 
 export class ReleasePage extends BasePage {
+  private url = `${Environment.BASE_UI_URL}${Endpoints.RELEASE}`;
+
   private buttonsText = {
-    addToCollectionText: 'Add to Collection'
+    addToCollectionText: 'Add to Collection',
   };
 
   private pageElements = {
     blockTrackInfo: this.page.locator('.body_utiDG'),
     trackList: this.page.locator('#release-tracklist'),
     releaseStats: this.page.locator('#release-stats'),
-    inCollectionTable: this.page.locator('.box_PFmyl')
+    inCollectionTable: this.page.locator('.box_PFmyl'),
   };
 
   private buttons = {
     addToCollection: this.page.locator('button', { hasText: this.buttonsText.addToCollectionText }),
-    removeButton: this.page.locator('button', { hasText: 'Remove' })
+    removeButton: this.page.locator('button', { hasText: 'Remove' }),
   };
 
   private releaseElements = {
@@ -30,7 +32,7 @@ export class ReleasePage extends BasePage {
     releaseCountry: this.page.locator('.table_c5ftk tr:nth-child(3) td'),
     releaseYear: this.page.locator('.table_c5ftk tr:nth-child(4) td'),
     releaseGenre: this.page.locator('.table_c5ftk tr:nth-child(5) td'),
-    releaseStyle: this.page.locator('.table_c5ftk tr:nth-child(6) td')
+    releaseStyle: this.page.locator('.table_c5ftk tr:nth-child(6) td'),
   };
 
   constructor(page: Page) {
@@ -38,7 +40,7 @@ export class ReleasePage extends BasePage {
   }
 
   async goto(releaseID: number) {
-    await this.gotoByUrl(`${Environment.BASE_UI_URL}${Endpoints.RELEASE}${releaseID}`);
+    await this.gotoByUrl(`${this.url}${releaseID}`);
   }
 
   async verifyReleasePage() {
@@ -50,25 +52,24 @@ export class ReleasePage extends BasePage {
   async verifyReleaseStructure(release: ReleaseResponse) {
     const info = UIDataHelper.convertReleaseInfo(release);
 
-    expect(this.releaseElements.releaseTitle).toContainText(info.title);
-    expect(this.releaseElements.releaseArtist).toContainText(info.artist);
-    expect(this.releaseElements.releaseLabel).toContainText(info.label);
-    //тут проблема с отображением структуры на странице, сделал не строгое совпадение без пробелов и запятых
+    expect.soft(this.releaseElements.releaseTitle).toContainText(info.title);
+    expect.soft(this.releaseElements.releaseArtist).toContainText(info.artist);
+    expect.soft(this.releaseElements.releaseLabel).toContainText(info.label);
     for (const part of info.formatParts) {
-      await expect(this.releaseElements.releaseFormat).toContainText(part);
+      await expect.soft(this.releaseElements.releaseFormat).toContainText(part);
     }
-    expect(this.releaseElements.releaseCountry).toContainText(info.country);
-    expect(this.releaseElements.releaseYear).toContainText(info.year);
-    expect(this.releaseElements.releaseGenre).toContainText(info.genre);
-    expect(this.releaseElements.releaseStyle).toContainText(info.style);
+    expect.soft(this.releaseElements.releaseCountry).toContainText(info.country);
+    expect.soft(this.releaseElements.releaseYear).toContainText(info.year);
+    expect.soft(this.releaseElements.releaseGenre).toContainText(info.genre);
+    expect.soft(this.releaseElements.releaseStyle).toContainText(info.style);
   }
 
-  async clickToAddToCollectionButtonAndVerifyTable() {
+  async addReleaseToCollectionAndVerifyNotification() {
     await this.buttons.addToCollection.click();
     expect(this.pageElements.inCollectionTable).toBeVisible();
   }
 
-  async removeFromCollectionAndVeridyTable() {
+  async removeFromCollectionAndVerifyTable() {
     await this.buttons.removeButton.click();
     expect(this.pageElements.inCollectionTable).toBeHidden();
   }

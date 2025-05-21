@@ -1,3 +1,7 @@
 //TestApp
 //https://example.com
 //https://example.com/callback
+
+
+//Collection сортировка по тайтлу (только англ треки)
+//Больше тестов на релиз странице (рейтинг, итд)

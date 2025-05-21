@@ -1,0 +1,132 @@
+# Test info
+
+- Name: Release - UI >> Click to add collection button and check table
+- Location: C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\tests\release.spec.ts:11:7
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('button').filter({ hasText: 'Add to Collection' })
+
+    at ReleasePage.addReleaseToCollectionAndVerifyNotification (C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\pages\release.page.ts:70:40)
+    at C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\tests\release.spec.ts:17:35
+```
+
+# Page snapshot
+
+```yaml
+- heading "404" [level=1]
+- paragraph: Sorry, this resource could not be found.
+- paragraph:
+  - link "discogs.com":
+    - /url: http://www.discogs.com
+    - strong: discogs.com
+  - text: —
+  - link "Help!":
+    - /url: http://www.discogs.com/help
+    - strong: Help!
+  - text: —
+  - link "@discogs":
+    - /url: https://status.discogs.com
+- link "Discogs":
+  - /url: http://www.discogs.com
+  - img "Discogs"
+- region "Cookie banner":
+  - dialog "Let's manage your privacy":
+    - heading "Let's manage your privacy" [level=2]
+    - text: This website uses cookies and similar tracking technologies to enable our website functionalities, like enhancing user experience or analyzing performance traffic. We also share information about your site usage with our social media, advertising and analytics providers. Because we respect your right to privacy, you can choose not to allow some types of cookies by clicking “Cookie Settings” or “Reject All” to opt out. For more details, see our
+    - link "Cookie Policy":
+      - /url: https://support.discogs.com/hc/en-us/articles/360009334413
+    - text: .
+    - button "Cookies Settings"
+    - button "Reject All"
+    - button "Accept All Cookies"
+    - button "Close"
+```
+
+# Test source
+
+```ts
+   1 | import { expect, Page } from '@playwright/test';
+   2 | import { Environment } from '../../env';
+   3 | import { Endpoints } from '../../utils/constants/endpoints';
+   4 | import { BasePage } from './base.page';
+   5 | import { ReleaseResponse } from '../../models/api.models/release.response';
+   6 | import { UIDataHelper } from '../../utils/ui.utils/ui.data.helper';
+   7 |
+   8 | export class ReleasePage extends BasePage {
+   9 |   
+  10 |   private url = `${Environment.BASE_UI_URL}${Endpoints.RELEASE}{releaseId}`
+  11 |
+  12 |   private buttonsText = {
+  13 |     addToCollectionText: 'Add to Collection'
+  14 |   };
+  15 |
+  16 |   private pageElements = {
+  17 |     blockTrackInfo: this.page.locator('.body_utiDG'),
+  18 |     trackList: this.page.locator('#release-tracklist'),
+  19 |     releaseStats: this.page.locator('#release-stats'),
+  20 |     inCollectionTable: this.page.locator('.box_PFmyl')
+  21 |   };
+  22 |
+  23 |   private buttons = {
+  24 |     addToCollection: this.page.locator('button', { hasText: this.buttonsText.addToCollectionText }),
+  25 |     removeButton: this.page.locator('button', { hasText: 'Remove' })
+  26 |   };
+  27 |
+  28 |   private releaseElements = {
+  29 |     releaseTitle: this.page.locator('h1.title_Brnd1'),
+  30 |     releaseArtist: this.page.locator('.link_PKPcS').first(),
+  31 |     releaseLabel: this.page.locator('.table_c5ftk tr:nth-child(1) td'),
+  32 |     releaseFormat: this.page.locator('.table_c5ftk tr:nth-child(2) td'),
+  33 |     releaseCountry: this.page.locator('.table_c5ftk tr:nth-child(3) td'),
+  34 |     releaseYear: this.page.locator('.table_c5ftk tr:nth-child(4) td'),
+  35 |     releaseGenre: this.page.locator('.table_c5ftk tr:nth-child(5) td'),
+  36 |     releaseStyle: this.page.locator('.table_c5ftk tr:nth-child(6) td')
+  37 |   };
+  38 |
+  39 |   constructor(page: Page) {
+  40 |     super(page);
+  41 |
+  42 |   }
+  43 |
+  44 |   async goto(releaseID: number) {
+  45 |     await this.gotoByUrl(this.url.replace('{releaseID}', releaseID.toString()));
+  46 |   }
+  47 |
+  48 |   async verifyReleasePage() {
+  49 |     expect(this.pageElements.blockTrackInfo).toBeVisible();
+  50 |     expect(this.pageElements.trackList).toBeVisible();
+  51 |     expect(this.pageElements.releaseStats).toBeVisible();
+  52 |   }
+  53 |
+  54 |   async verifyReleaseStructure(release: ReleaseResponse) {
+  55 |     const info = UIDataHelper.convertReleaseInfo(release);
+  56 |
+  57 |     expect.soft(this.releaseElements.releaseTitle).toContainText(info.title);
+  58 |     expect.soft(this.releaseElements.releaseArtist).toContainText(info.artist);
+  59 |     expect.soft(this.releaseElements.releaseLabel).toContainText(info.label);
+  60 |     for (const part of info.formatParts) {
+  61 |       await expect.soft(this.releaseElements.releaseFormat).toContainText(part);
+  62 |     }
+  63 |     expect.soft(this.releaseElements.releaseCountry).toContainText(info.country);
+  64 |     expect.soft(this.releaseElements.releaseYear).toContainText(info.year);
+  65 |     expect.soft(this.releaseElements.releaseGenre).toContainText(info.genre);
+  66 |     expect.soft(this.releaseElements.releaseStyle).toContainText(info.style);
+  67 |   }
+  68 |
+  69 |   async addReleaseToCollectionAndVerifyNotification() {
+> 70 |     await this.buttons.addToCollection.click();
+     |                                        ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  71 |     expect(this.pageElements.inCollectionTable).toBeVisible();
+  72 |   }
+  73 |
+  74 |   async removeFromCollectionAndVerifyTable() {
+  75 |     await this.buttons.removeButton.click();
+  76 |     expect(this.pageElements.inCollectionTable).toBeHidden();
+  77 |   }
+  78 | }
+  79 |
+```
