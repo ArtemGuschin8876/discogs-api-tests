@@ -1,8 +1,4 @@
-name: Playwright CI
-
-on:
-  push:
-    branches: [master]
+name: CI
 
 jobs:
   test:
@@ -25,3 +21,6 @@ jobs:
 
       - name: Run tests
         run: npx playwright test
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
