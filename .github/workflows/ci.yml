@@ -23,8 +23,8 @@ jobs:
       - name: 🧪 Install Chromium
         run: npx playwright install chromium
 
-      - name: ▶️ Run Playwright tests
-        run: npx playwright test src/api/tests/wantlist.spec.ts
+      - name: ▶️ Run Playwright UI tests
+        run: npx playwright test src/ui/tests
         env:
           BASE_URL: https://api.discogs.com/
           UI_BASE_URL: https://www.discogs.com/
