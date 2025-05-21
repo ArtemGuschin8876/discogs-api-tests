@@ -1,0 +1,18 @@
+name: Upload storageState
+
+on:
+  workflow_dispatch: # вручной запуск из GitHub UI
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📤 Upload storageState.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: storage
+          path: state.json
