@@ -7,7 +7,7 @@ on:
 
 jobs:
   ui-tests:
-    name: Run UI tests with Allure
+    name: Run UI tests
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +26,7 @@ jobs:
         run: npx playwright install chromium
 
       - name: ▶️ Run UI tests (with Allure)
-        run: |
-          npx playwright test src/ui/tests --reporter=line,allure-playwright
+        run: npx playwright test src/ui/tests
         env:
           BASE_UI_URL: https://www.discogs.com/
           BASE_URL: https://api.discogs.com/
@@ -35,12 +34,14 @@ jobs:
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           LABEL_ID: '681346'
 
+      - name: 📥 Install Allure CLI
+        run: npm install -g allure-commandline
+
       - name: 📊 Generate Allure report
-        run: |
-          npx allure generate --clean ./allure-results --output ./allure-report
+        run: allure generate ./allure-results --clean -o ./allure-report
 
       - name: 📤 Upload Allure report artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v3
         with:
           name: allure-report
-          path: allure-report
+          path: ./allure-report
