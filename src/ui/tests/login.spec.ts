@@ -4,8 +4,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Check login with correct and incorrect credentials', async () => {
   test.beforeEach(async ({ pageManager }) => {
-    const p = await pageManager.loginPage.goto();
-    console.log(p);
+    await pageManager.loginPage.goto();
   });
 
   test('Login flow with valid credentials', async ({ pageManager, uiUserName }) => {

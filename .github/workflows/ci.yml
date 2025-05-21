@@ -27,5 +27,5 @@ jobs:
         run: npx playwright test src/ui/tests
         env:
           BASE_URL: https://api.discogs.com/
-          UI_BASE_URL: https://www.discogs.com/
+          BASE_UI_URL: https://www.discogs.com/
           LABEL_ID: '1234567'
