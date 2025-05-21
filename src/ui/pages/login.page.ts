@@ -34,23 +34,25 @@ export class LoginPage extends BasePage {
   }
 
   async enterLoginCredentialsAndClickContinue(flag: string) {
-    await expect(async () => {
-      if (flag === 'positive') {
-        await this.fields.usernameField.pressSequentially(`${Environment.USER_NAME}`);
-        await this.fields.passwordField.pressSequentially(`${Environment.USER_PASSWORD}`);
-        await this.buttons.continueBtn.click();
-      } else if (flag === 'negative') {
-        await this.fields.usernameField.pressSequentially(
-          UIDataHelper.generateUnknownCredentials().username
-        );
-        await this.fields.passwordField.pressSequentially(
-          UIDataHelper.generateUnknownCredentials().password
-        );
-        await this.buttons.continueBtn.click();
-      } else {
-        console.log('Invalid flag');
-      }
-    }).toPass({ timeout: 10000, intervals: [100, 250, 500] });
+    await expect(this.fields.usernameField).toBeVisible();
+    await expect(this.fields.passwordField).toBeVisible();
+    await expect(this.buttons.continueBtn).toBeVisible();
+
+    if (flag === 'positive') {
+      await this.fields.usernameField.pressSequentially(`${Environment.USER_NAME}`);
+      await this.fields.passwordField.pressSequentially(`${Environment.USER_PASSWORD}`);
+      await this.buttons.continueBtn.click();
+    } else if (flag === 'negative') {
+      await this.fields.usernameField.pressSequentially(
+        UIDataHelper.generateUnknownCredentials().username
+      );
+      await this.fields.passwordField.pressSequentially(
+        UIDataHelper.generateUnknownCredentials().password
+      );
+      await this.buttons.continueBtn.click();
+    } else {
+      console.log('Invalid flag');
+    }
   }
 
   async checkErrorMessage() {
