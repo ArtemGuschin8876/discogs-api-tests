@@ -19,14 +19,14 @@ export default defineConfig({
       testDir: './src/ui/tests',
       use: {
         storageState: 'state.json',
-        headless: false,
-        ...devices['Desktop Chrome']
-      }
+        headless: true,
+        ...devices['Desktop Chrome'],
+      },
     },
     {
       name: 'api',
-      testDir: './src/api/tests'
-    }
+      testDir: './src/api/tests',
+    },
   ],
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -43,8 +43,8 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry'
-  }
+    trace: 'on-first-retry',
+  },
 
   /* Configure projects for major browsers */
   // projects: [
