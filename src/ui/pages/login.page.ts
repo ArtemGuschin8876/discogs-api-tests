@@ -38,7 +38,6 @@ export class LoginPage extends BasePage {
       await this.fields.usernameField.pressSequentially(`${Environment.USER_NAME}`);
       await this.fields.passwordField.pressSequentially(`${Environment.USER_PASSWORD}`);
       await this.buttons.continueBtn.click();
-      console.log('Logging in as:', Environment.USER_NAME);
     } else if (flag === 'negative') {
       await this.fields.usernameField.pressSequentially(
         UIDataHelper.generateUnknownCredentials().username

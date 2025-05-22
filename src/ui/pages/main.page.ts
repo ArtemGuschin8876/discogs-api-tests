@@ -7,13 +7,14 @@ export class MainPage extends BasePage {
   private buttonLoginSelector = 'button[aria-label^="Logged in as"]';
 
   private buttons = {
-    loginBtn: this.page.locator('#log_in_link')
+    loginBtn: this.page.locator('#log_in_link'),
   };
 
   private elements = {
     logo: this.page.locator('#custom-prompt-logo'),
-    userButton: this.page.locator('button[aria-label^="Logged in as"]')
+    userButton: this.page.locator('button[aria-label^="Logged in as"]'),
   };
+
   constructor(page: Page) {
     super(page);
     this.urlMainPage = `${Environment.BASE_UI_URL}`;
@@ -29,7 +30,14 @@ export class MainPage extends BasePage {
   }
 
   async verifyUserAfterLogin(userName: string) {
-    await this.page.waitForSelector(this.buttonLoginSelector, { timeout: 5000 });
-    expect(this.elements.userButton).toHaveAttribute('aria-label', `Logged in as ${userName}`);
+    const expectedLabel = `Logged in as ${userName}`;
+    console.log('⏳ Waiting for user button with label:', expectedLabel);
+
+    expect(this.elements.userButton).toHaveAttribute('aria-label', expectedLabel, {
+      timeout: 10000,
+    });
+
+    const actualLabel = await this.elements.userButton.getAttribute('aria-label');
+    console.log('✅ Found label:', actualLabel);
   }
 }
