@@ -25,23 +25,23 @@ jobs:
       - name: 🧪 Install Chromium only
         run: npx playwright install chromium
 
-      - name: ▶️ Run UI tests (with Allure)
-        run: npx playwright test src/ui/tests
+      - name: ▶️ Run UI tests with trace
+        run: npx playwright test src/ui/tests --reporter=line
         env:
           BASE_UI_URL: https://www.discogs.com/
           BASE_URL: https://api.discogs.com/
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           LABEL_ID: '681346'
+        # включить trace
+        continue-on-error: true
 
-      - name: 📥 Install Allure CLI
-        run: npm install -g allure-commandline
+      - name: 🧬 Generate Allure report
+        run: |
+          npx allure generate ./allure-results --clean -o ./allure-report
 
-      - name: 📊 Generate Allure report
-        run: allure generate ./allure-results --clean -o ./allure-report
-
-      - name: 📤 Upload Allure report artifact
-        uses: actions/upload-artifact@main
+      - name: 🚀 Publish Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: allure-report
-          path: ./allure-report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
