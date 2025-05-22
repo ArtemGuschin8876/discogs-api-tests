@@ -33,6 +33,11 @@ export class MainPage extends BasePage {
     const expectedLabel = `Logged in as ${userName}`;
     console.log('⏳ Waiting for user button with label:', expectedLabel);
 
+    await this.page.waitForSelector(this.buttonLoginSelector, {
+      timeout: 10000,
+      state: 'attached',
+    });
+
     expect(this.elements.userButton).toHaveAttribute('aria-label', expectedLabel, {
       timeout: 10000,
     });
