@@ -29,20 +29,39 @@ export class MainPage extends BasePage {
     expect(this.elements.logo).toBeVisible();
   }
 
+  // async verifyUserAfterLogin(userName: string) {
+  //   const expectedLabel = `Logged in as ${userName}`;
+  //   console.log('⏳ Waiting for user button with label:', expectedLabel);
+
+  //   await this.page.waitForSelector(this.buttonLoginSelector, {
+  //     timeout: 10000,
+  //     state: 'attached',
+  //   });
+
+  //   expect(this.elements.userButton).toHaveAttribute('aria-label', expectedLabel, {
+  //     timeout: 10000,
+  //   });
+
+  //   const actualLabel = await this.elements.userButton.getAttribute('aria-label');
+  //   console.log('✅ Found label:', actualLabel);
+  // }
+
   async verifyUserAfterLogin(userName: string) {
     const expectedLabel = `Logged in as ${userName}`;
     console.log('⏳ Waiting for user button with label:', expectedLabel);
 
-    await this.page.waitForSelector(this.buttonLoginSelector, {
-      timeout: 10000,
-      state: 'attached',
-    });
+    await expect(async () => {
+      const userButton = this.elements.userButton;
 
-    expect(this.elements.userButton).toHaveAttribute('aria-label', expectedLabel, {
-      timeout: 10000,
-    });
+      const isVisible = await userButton.isVisible();
+      if (!isVisible) throw new Error('❌ User button is not visible');
 
-    const actualLabel = await this.elements.userButton.getAttribute('aria-label');
-    console.log('✅ Found label:', actualLabel);
+      const actualLabel = await userButton.getAttribute('aria-label');
+      console.log('🔍 Current label:', actualLabel);
+
+      expect(actualLabel).toBe(expectedLabel);
+    }).toPass({ timeout: 10000 });
+
+    console.log('✅ Found label:', expectedLabel);
   }
 }

@@ -19,7 +19,7 @@ export default defineConfig({
       testDir: './src/ui/tests',
       use: {
         storageState: 'state.json',
-        headless: true,
+        headless: false,
         ...devices['Desktop Chrome'],
       },
     },
