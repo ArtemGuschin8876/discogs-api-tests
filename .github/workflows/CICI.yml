@@ -7,7 +7,7 @@ on:
 
 jobs:
   ui-tests:
-    name: Run UI tests
+    name: Run UI tests with Allure
     runs-on: ubuntu-latest
 
     steps:
@@ -25,22 +25,23 @@ jobs:
       - name: 🧪 Install Chromium only
         run: npx playwright install chromium
 
-      - name: ▶️ Run UI tests with trace
-        run: npx playwright test src/ui/tests --reporter=line
+      - name: 🎯 Install Allure CLI
+        run: npm install -g allure-commandline --save-dev
+
+      - name: ▶️ Run UI tests with trace + allure
+        run: |
+          npx playwright test src/ui/tests --reporter=line
         env:
           BASE_UI_URL: https://www.discogs.com/
           BASE_URL: https://api.discogs.com/
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           LABEL_ID: '681346'
-        # включить trace
-        continue-on-error: true
 
-      - name: 🧬 Generate Allure report
-        run: |
-          npx allure generate ./allure-results --clean -o ./allure-report
+      - name: 📊 Generate Allure Report
+        run: allure generate ./allure-results --clean -o ./allure-report
 
-      - name: 🚀 Publish Allure report to GitHub Pages
+      - name: 🚀 Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
