@@ -46,6 +46,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          force_orphan: true
 
       - name: 🔗 Print Allure report URL
         run: echo "🔗 View Allure report at:https://artemguschin8876.github.io/discogs-api-tests/?t=$(date +%s)"
