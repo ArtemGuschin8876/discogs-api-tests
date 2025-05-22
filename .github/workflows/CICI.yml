@@ -48,4 +48,4 @@ jobs:
           publish_dir: ./allure-report
 
       - name: 🔗 Print Allure report URL
-        run: echo "🔗 View Allure report at:https://artemguschin8876.github.io/discogs-api-tests/"
+        run: echo "🔗 View Allure report at:https://artemguschin8876.github.io/discogs-api-tests/?t=$(date +%s)"
