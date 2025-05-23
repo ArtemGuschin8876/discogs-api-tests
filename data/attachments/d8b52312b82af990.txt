@@ -1,0 +1,2 @@
+URL: https://api.discogs.com/labels/681346/releases
+🟡 Tables: locator('.box_PFmyl').filter({ has: locator('h3').filter({ hasText: 'In Collection' }) }).first()

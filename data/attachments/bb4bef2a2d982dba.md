@@ -1,0 +1,1703 @@
+# Test info
+
+- Name: Release page tests >> Click to add collection button check notification and remove it
+- Location: C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\tests\release.spec.ts:16:7
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toBeHidden()
+
+Locator: locator('.box_PFmyl').filter({ has: locator('h3').filter({ hasText: 'In Collection' }) }).first()
+Expected: hidden
+Received: visible
+Call log:
+  - expect.toBeHidden with timeout 5000ms
+  - waiting for locator('.box_PFmyl').filter({ has: locator('h3').filter({ hasText: 'In Collection' }) }).first()
+    9 × locator resolved to <div class="box_PFmyl collection_DQxgF">…</div>
+      - unexpected value "visible"
+
+    at ReleasePage.removeFromCollectionAndVerifyTable (C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\pages\release.page.ts:77:55)
+    at C:\Users\Artemka\pw-learn\discogs-api-tests\src\ui\tests\release.spec.ts:21:7
+```
+
+# Page snapshot
+
+```yaml
+- banner:
+  - link "Discogs":
+    - /url: /
+    - img "Discogs"
+  - search "Search Discogs":
+    - combobox "Search artists, albums and more..."
+    - button "Search"
+    - status
+  - navigation "Main":
+    - button "Explore"
+    - button "Marketplace"
+    - button "Community"
+  - navigation "User":
+    - link "Dashboard":
+      - /url: /my
+    - link "0 unread messages":
+      - /url: /messages
+      - img
+    - link "0 in cart":
+      - /url: /sell/cart
+      - img
+    - button "Notifications":
+      - img
+    - button "Logged in as Phonker123":
+      - img "Phonker123"
+- main:
+  - heading "Britney Spears – Glory (Japan Tour Edition)" [level=1]:
+    - link "Britney Spears":
+      - /url: /artist/15687-Britney-Spears
+    - text: – Glory (Japan Tour Edition)
+  - link "Britney Spears - Glory (Japan Tour Edition) album cover More images":
+    - /url: /release/10364956-Britney-Spears-Glory-Japan-Tour-Edition/image/SW1hZ2U6MjkwMTcyODc=?redirected=true
+    - img "Britney Spears - Glory (Japan Tour Edition) album cover"
+    - paragraph: More images
+  - table:
+    - rowgroup:
+      - 'row "Label: RCA – SICP 5426~7, Maverick – SICP 5426~7"':
+        - rowheader "Label:":
+          - heading "Label:" [level=2]
+        - cell "RCA – SICP 5426~7, Maverick – SICP 5426~7":
+          - link "RCA":
+            - /url: /label/895-RCA
+          - text: – SICP 5426~7,
+          - link "Maverick":
+            - /url: /label/1685-Maverick
+          - text: – SICP 5426~7
+      - 'row "Format: CD, Album CD, Compilation, Remastered All Media, Limited Edition"':
+        - rowheader "Format:":
+          - heading "Format:" [level=2]
+        - cell "CD, Album CD, Compilation, Remastered All Media, Limited Edition":
+          - link "CD":
+            - /url: /search/?format_exact=CD
+          - text: ", Album"
+          - link "CD":
+            - /url: /search/?format_exact=CD
+          - text: ", Compilation, Remastered"
+          - link "All Media":
+            - /url: /search/?format_exact=All Media
+          - text: ", Limited Edition"
+      - 'row "Country: Japan"':
+        - rowheader "Country:":
+          - heading "Country:" [level=2]
+        - cell "Japan":
+          - link "Japan":
+            - /url: /search/?country=Japan
+      - 'row "Released: May 31, 2017"':
+        - rowheader "Released:":
+          - heading "Released:" [level=2]
+        - cell "May 31, 2017":
+          - link "May 31, 2017":
+            - /url: /search/?decade=2010&year=2017
+            - time: May 31, 2017
+      - 'row "Genre: Electronic, Pop"':
+        - rowheader "Genre:":
+          - heading "Genre:" [level=2]
+        - cell "Electronic, Pop":
+          - link "Electronic":
+            - /url: /genre/electronic
+          - text: ","
+          - link "Pop":
+            - /url: /genre/pop
+      - 'row "Style: Synth-pop"':
+        - rowheader "Style:":
+          - heading "Style:" [level=2]
+        - cell "Synth-pop":
+          - link "Synth-pop":
+            - /url: /style/synth-pop
+  - heading "Tracklist" [level=2]
+  - button "Hide Credits"
+  - table:
+    - rowgroup:
+      - row "1-1 Invitation Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Nick Monson Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Erik Belz Written-By – Britney Spears, Julia Michaels, Justin Tranter, Nick Monson 3:18":
+        - cell "1-1"
+        - cell
+        - cell "Invitation Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Nick Monson Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Erik Belz Written-By – Britney Spears, Julia Michaels, Justin Tranter, Nick Monson":
+          - text: Invitation Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Nick Monson":
+            - /url: /artist/1521687-Nick-Monson
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Erik Belz":
+            - /url: /artist/5217495-Erik-Belz
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Nick Monson":
+            - /url: /artist/1521687-Nick-Monson
+        - cell "3:18"
+      - row "1-2 Do You Wanna Come Over? Backing Vocals – Jermaine Jackson (2), Julia Michaels Bass – Mattman & Robin Drums – Mattman & Robin Engineer – John Hanes Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Kalimba – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Producer [Vocals] – Mattman & Robin Programmed By – Mattman & Robin Recorded By – Mattman & Robin Recorded By, Musical Assistance – Benny Faccone, Jason Patterson (2) Synth – Mattman & Robin Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson, Sandy Chila 3:22":
+        - cell "1-2"
+        - cell
+        - cell "Do You Wanna Come Over? Backing Vocals – Jermaine Jackson (2), Julia Michaels Bass – Mattman & Robin Drums – Mattman & Robin Engineer – John Hanes Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Kalimba – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Producer [Vocals] – Mattman & Robin Programmed By – Mattman & Robin Recorded By – Mattman & Robin Recorded By, Musical Assistance – Benny Faccone, Jason Patterson (2) Synth – Mattman & Robin Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson, Sandy Chila":
+          - text: Do You Wanna Come Over? Backing Vocals –
+          - link "Jermaine Jackson (2)":
+            - /url: /artist/1023752-Jermaine-Jackson-2
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: Bass –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Drums –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Engineer –
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Finger Snaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Guitar –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Handclaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Kalimba –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Percussion –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Producer –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Producer [Vocals] –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Programmed By –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By, Musical Assistance –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: ","
+          - link "Jason Patterson (2)":
+            - /url: /artist/1601578-Jason-Patterson-2
+          - text: Synth –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Written-By –
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Mattias Larsson (7)":
+            - /url: /artist/3495771-Mattias-Larsson-7
+          - text: ","
+          - link "Robin Fredriksson":
+            - /url: /artist/2778722-Robin-Fredriksson
+          - text: ","
+          - link "Sandy Chila":
+            - /url: /artist/487558-Sandy-Chila
+        - cell "3:22"
+      - row "1-3 Make Me... Backing Vocals – Joe Janiak Featuring – G-Eazy Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Burns (4) Recorded By – Aaron Dobos, Burns (4), Mischke Recorded By, Musical Assistance – Benny Faccone, Rob Katz Vocals, Producer – Mischke Written-By – Britney Spears, Burns (4), Gerald Gillum, Joe Janiak 3:51":
+        - cell "1-3"
+        - cell
+        - cell "Make Me... Backing Vocals – Joe Janiak Featuring – G-Eazy Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Burns (4) Recorded By – Aaron Dobos, Burns (4), Mischke Recorded By, Musical Assistance – Benny Faccone, Rob Katz Vocals, Producer – Mischke Written-By – Britney Spears, Burns (4), Gerald Gillum, Joe Janiak":
+          - text: Make Me... Backing Vocals –
+          - link "Joe Janiak":
+            - /url: /artist/3864808-Joe-Janiak
+          - text: Featuring –
+          - link "G-Eazy":
+            - /url: /artist/2875151-G-Eazy
+          - text: Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Burns (4)":
+            - /url: /artist/760489-Burns-4
+          - text: Recorded By –
+          - link "Aaron Dobos":
+            - /url: /artist/3194467-Aaron-Dobos
+          - text: ","
+          - link "Burns (4)":
+            - /url: /artist/760489-Burns-4
+          - text: ","
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By, Musical Assistance –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: ","
+          - link "Rob Katz":
+            - /url: /artist/2012009-Rob-Katz
+          - text: Vocals, Producer –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Burns (4)":
+            - /url: /artist/760489-Burns-4
+          - text: ","
+          - link "Gerald Gillum":
+            - /url: /artist/5122488-Gerald-Gillum
+          - text: ","
+          - link "Joe Janiak":
+            - /url: /artist/3864808-Joe-Janiak
+        - cell "3:51"
+      - row "1-4 Private Show Backing Vocals – Carla Marie Williams Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – YoungFyre Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Britney Spears, Carla Marie Williams, Simon Smith, Tramaine Winfrey 3:54":
+        - cell "1-4"
+        - cell
+        - cell "Private Show Backing Vocals – Carla Marie Williams Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – YoungFyre Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Britney Spears, Carla Marie Williams, Simon Smith, Tramaine Winfrey":
+          - text: Private Show Backing Vocals –
+          - link "Carla Marie Williams":
+            - /url: /artist/1143663-Carla-Marie-Williams
+          - text: Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "YoungFyre":
+            - /url: /artist/1528559-YoungFyre
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Kevin Luu":
+            - /url: /artist/3940343-Kevin-Luu
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Carla Marie Williams":
+            - /url: /artist/1143663-Carla-Marie-Williams
+          - text: ","
+          - link "Simon Smith":
+            - /url: /artist/240229-Simon-Smith
+          - text: ","
+          - link "Tramaine Winfrey":
+            - /url: /artist/1929635-Tramaine-Winfrey
+        - cell "3:54"
+      - row "1-5 Man On The Moon Backing Vocals – Ilsey Juber, Jason Evigan, Marcus Lomax, Phoebe Ryan, Sterling Fox Engineer – James Royo, John Hanes Guitar – Sterling Fox Instrumentation By – Jason Evigan Mixed By – Serban Ghenea Musical Assistance – Isaiah Tejada Producer – Jason Evigan Producer [Additionnal Vocal Production] – Dan Book, Pat Thrall Recorded By – Jason Evigan Recorded By [Assistant] – Benny Faccone Written-By – Ilsey Juber, Jason Evigan, Marcus Lomax, Phoebe Ryan, Sterling Fox 3:46":
+        - cell "1-5"
+        - cell
+        - cell "Man On The Moon Backing Vocals – Ilsey Juber, Jason Evigan, Marcus Lomax, Phoebe Ryan, Sterling Fox Engineer – James Royo, John Hanes Guitar – Sterling Fox Instrumentation By – Jason Evigan Mixed By – Serban Ghenea Musical Assistance – Isaiah Tejada Producer – Jason Evigan Producer [Additionnal Vocal Production] – Dan Book, Pat Thrall Recorded By – Jason Evigan Recorded By [Assistant] – Benny Faccone Written-By – Ilsey Juber, Jason Evigan, Marcus Lomax, Phoebe Ryan, Sterling Fox":
+          - text: Man On The Moon Backing Vocals –
+          - link "Ilsey Juber":
+            - /url: /artist/2292310-Ilsey-Juber
+          - text: ","
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: ","
+          - link "Marcus Lomax":
+            - /url: /artist/2360054-Marcus-Lomax
+          - text: ","
+          - link "Phoebe Ryan":
+            - /url: /artist/3525952-Phoebe-Ryan
+          - text: ","
+          - link "Sterling Fox":
+            - /url: /artist/887155-Sterling-Fox
+          - text: Engineer –
+          - link "James Royo":
+            - /url: /artist/3608185-James-Royo
+          - text: ","
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Guitar –
+          - link "Sterling Fox":
+            - /url: /artist/887155-Sterling-Fox
+          - text: Instrumentation By –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Musical Assistance –
+          - link "Isaiah Tejada":
+            - /url: /artist/3846598-Isaiah-Tejada
+          - text: Producer –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Producer [Additionnal Vocal Production] –
+          - link "Dan Book":
+            - /url: /artist/2540025-Dan-Book
+          - text: ","
+          - link "Pat Thrall":
+            - /url: /artist/270195-Pat-Thrall
+          - text: Recorded By –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Recorded By [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: Written-By –
+          - link "Ilsey Juber":
+            - /url: /artist/2292310-Ilsey-Juber
+          - text: ","
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: ","
+          - link "Marcus Lomax":
+            - /url: /artist/2360054-Marcus-Lomax
+          - text: ","
+          - link "Phoebe Ryan":
+            - /url: /artist/3525952-Phoebe-Ryan
+          - text: ","
+          - link "Sterling Fox":
+            - /url: /artist/887155-Sterling-Fox
+        - cell "3:46"
+      - row "1-6 Just Luv Me Backing Vocals – Julia Michaels Instrumentation By – Cashmere Cat, Robopop (4) Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Cashmere Cat, Robopop (4) Producer [Vocals] – Mischke Programmed By – Cashmere Cat, Robopop (4) Recorded By – Mischke Recorded By [Assistant] – Benny Faccone Written-By – Daniel Omelio, Julia Michaels, Magnus August Høiberg 4:01":
+        - cell "1-6"
+        - cell
+        - cell "Just Luv Me Backing Vocals – Julia Michaels Instrumentation By – Cashmere Cat, Robopop (4) Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Cashmere Cat, Robopop (4) Producer [Vocals] – Mischke Programmed By – Cashmere Cat, Robopop (4) Recorded By – Mischke Recorded By [Assistant] – Benny Faccone Written-By – Daniel Omelio, Julia Michaels, Magnus August Høiberg":
+          - text: Just Luv Me Backing Vocals –
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: Instrumentation By –
+          - link "Cashmere Cat":
+            - /url: /artist/2384436-Cashmere-Cat
+          - text: ","
+          - link "Robopop (4)":
+            - /url: /artist/2482492-Robopop-4
+          - text: Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Cashmere Cat":
+            - /url: /artist/2384436-Cashmere-Cat
+          - text: ","
+          - link "Robopop (4)":
+            - /url: /artist/2482492-Robopop-4
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Programmed By –
+          - link "Cashmere Cat":
+            - /url: /artist/2384436-Cashmere-Cat
+          - text: ","
+          - link "Robopop (4)":
+            - /url: /artist/2482492-Robopop-4
+          - text: Recorded By –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: Written-By –
+          - link "Daniel Omelio":
+            - /url: /artist/2445746-Daniel-Omelio
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Magnus August Høiberg":
+            - /url: /artist/1922195-Magnus-August-Høiberg
+        - cell "4:01"
+      - row "1-7 Clumsy Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Alex Nice*, Oak Felder* Producer [Vocals] – Mischke Recorded By – Mischke Recorded By [Additionnal Vocals] – Benjamin Rice Recorded By [Assistant] – Benny Faccone, Erik Belz Vocals [Crowd] – Britney Spears, Mischke, Talay Riley, Trevor Brown (14), Warren Felder, Zaire Koalo Written-By – Alex Niceforo, Talay Riley, Warren Felder 3:02":
+        - cell "1-7"
+        - cell
+        - cell "Clumsy Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Alex Nice*, Oak Felder* Producer [Vocals] – Mischke Recorded By – Mischke Recorded By [Additionnal Vocals] – Benjamin Rice Recorded By [Assistant] – Benny Faccone, Erik Belz Vocals [Crowd] – Britney Spears, Mischke, Talay Riley, Trevor Brown (14), Warren Felder, Zaire Koalo Written-By – Alex Niceforo, Talay Riley, Warren Felder":
+          - text: Clumsy Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Alex Nice":
+            - /url: /artist/3418043-Alex-Niceforo
+          - text: "*,"
+          - link "Oak Felder":
+            - /url: /artist/991629-Warren-Felder
+          - text: "* Producer [Vocals] –"
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By [Additionnal Vocals] –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: ","
+          - link "Erik Belz":
+            - /url: /artist/5217495-Erik-Belz
+          - text: Vocals [Crowd] –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: ","
+          - link "Talay Riley":
+            - /url: /artist/1689956-Talay-Riley
+          - text: ","
+          - link "Trevor Brown (14)":
+            - /url: /artist/4944472-Trevor-Brown-14
+          - text: ","
+          - link "Warren Felder":
+            - /url: /artist/991629-Warren-Felder
+          - text: ","
+          - link "Zaire Koalo":
+            - /url: /artist/3024027-Zaire-Koalo
+          - text: Written-By –
+          - link "Alex Niceforo":
+            - /url: /artist/3418043-Alex-Niceforo
+          - text: ","
+          - link "Talay Riley":
+            - /url: /artist/1689956-Talay-Riley
+          - text: ","
+          - link "Warren Felder":
+            - /url: /artist/991629-Warren-Felder
+        - cell "3:02"
+      - row "1-8 Slumber Party Backing Vocals – Julia Michaels Bass – Mattman & Robin Brass – Mattman & Robin Drums – Mattman & Robin Engineer – John Cranfield* Engineer [Engineered For Mix] – John Hanes Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Marimba – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Programmed By – Mattman & Robin Recorded By – Benjamin Rice, Mattman & Robin Recorded By [Assistant] – Erik Belz Synth – Mattman & Robin Vocals [Producer] – Mattman & Robin, Mischke Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson 3:34":
+        - cell "1-8"
+        - cell
+        - cell "Slumber Party Backing Vocals – Julia Michaels Bass – Mattman & Robin Brass – Mattman & Robin Drums – Mattman & Robin Engineer – John Cranfield* Engineer [Engineered For Mix] – John Hanes Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Marimba – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Programmed By – Mattman & Robin Recorded By – Benjamin Rice, Mattman & Robin Recorded By [Assistant] – Erik Belz Synth – Mattman & Robin Vocals [Producer] – Mattman & Robin, Mischke Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson":
+          - text: Slumber Party Backing Vocals –
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: Bass –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Brass –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Drums –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Engineer –
+          - link "John Cranfield":
+            - /url: /artist/467442-John-Silas-Cranfield
+          - text: "* Engineer [Engineered For Mix] –"
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Finger Snaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Guitar –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Handclaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Marimba –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Percussion –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Producer –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Programmed By –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: ","
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By [Assistant] –
+          - link "Erik Belz":
+            - /url: /artist/5217495-Erik-Belz
+          - text: Synth –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Vocals [Producer] –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: ","
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Written-By –
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Mattias Larsson (7)":
+            - /url: /artist/3495771-Mattias-Larsson-7
+          - text: ","
+          - link "Robin Fredriksson":
+            - /url: /artist/2778722-Robin-Fredriksson
+        - cell "3:34"
+      - row "1-9 Just Like Me Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Nick Monson Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Erik Belz Written-By – Britney Spears, Julia Michaels, Justin Tranter, Nick Monson 2:44":
+        - cell "1-9"
+        - cell
+        - cell "Just Like Me Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Nick Monson Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Erik Belz Written-By – Britney Spears, Julia Michaels, Justin Tranter, Nick Monson":
+          - text: Just Like Me Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Nick Monson":
+            - /url: /artist/1521687-Nick-Monson
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Erik Belz":
+            - /url: /artist/5217495-Erik-Belz
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Nick Monson":
+            - /url: /artist/1521687-Nick-Monson
+        - cell "2:44"
+      - row "1-10 Love Me Down Backing Vocals – Jessica Ashley Engineer – Andrew Goldstein Engineer [Engineered For Mix] – John Hanes Keyboards – Andrew Goldstein Mixed By – Serban Ghenea Producer – Andrew Goldstein Producer [Vocals] – Mischke Programmed By – Andrew Goldstein Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Andrew Goldstein, Evan Kidd Bogart, Jesse St. John, Jessica Karpov 3:18":
+        - cell "1-10"
+        - cell
+        - cell "Love Me Down Backing Vocals – Jessica Ashley Engineer – Andrew Goldstein Engineer [Engineered For Mix] – John Hanes Keyboards – Andrew Goldstein Mixed By – Serban Ghenea Producer – Andrew Goldstein Producer [Vocals] – Mischke Programmed By – Andrew Goldstein Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Andrew Goldstein, Evan Kidd Bogart, Jesse St. John, Jessica Karpov":
+          - text: Love Me Down Backing Vocals –
+          - link "Jessica Ashley":
+            - /url: /artist/4647742-Jessica-Ashley
+          - text: Engineer –
+          - link "Andrew Goldstein":
+            - /url: /artist/2262765-Andrew-Goldstein
+          - text: Engineer [Engineered For Mix] –
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Keyboards –
+          - link "Andrew Goldstein":
+            - /url: /artist/2262765-Andrew-Goldstein
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Producer –
+          - link "Andrew Goldstein":
+            - /url: /artist/2262765-Andrew-Goldstein
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Programmed By –
+          - link "Andrew Goldstein":
+            - /url: /artist/2262765-Andrew-Goldstein
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Kevin Luu":
+            - /url: /artist/3940343-Kevin-Luu
+          - text: Written-By –
+          - link "Andrew Goldstein":
+            - /url: /artist/2262765-Andrew-Goldstein
+          - text: ","
+          - link "Evan Kidd Bogart":
+            - /url: /artist/933563-Evan-Kidd-Bogart
+          - text: ","
+          - link "Jesse St. John":
+            - /url: /artist/4490620-Jesse-St-John
+          - text: ","
+          - link "Jessica Karpov":
+            - /url: /artist/4244907-Jessica-Karpov
+        - cell "3:18"
+      - row "1-11 Hard To Forget Ya Backing Vocals – Brittany Coney, Denisea \"Blu June\" Andrews*, Ed Druett, Ian Kirkpatrick, Linda Pitchard, Oscar Görres Bass – Oscar Görres Co-producer – Ian Kirkpatrick Engineer [Engineered For Mix] – John Hanes Finger Snaps – Oscar Görres Guitar – Oscar Görres Mixed By – Serban Ghenea Musical Assistance – Alex DeGroot, Jason Patterson (2), Kevin Luu Producer – Ian Kirkpatrick, Oscar Görres Producer [Vocals] – Mischke, Oscar Görres Programmed By – Ian Kirkpatrick, Oscar Görres Recorded By – Benjamin Rice, Oscar Görres Shaker – Oscar Görres Synth – Oscar Görres Written-By – Brittany Coney, Denisia Andrews, Ed Drewett, Ian Kirkpatrick, Oscar Görres 3:29":
+        - cell "1-11"
+        - cell
+        - cell "Hard To Forget Ya Backing Vocals – Brittany Coney, Denisea \"Blu June\" Andrews*, Ed Druett, Ian Kirkpatrick, Linda Pitchard, Oscar Görres Bass – Oscar Görres Co-producer – Ian Kirkpatrick Engineer [Engineered For Mix] – John Hanes Finger Snaps – Oscar Görres Guitar – Oscar Görres Mixed By – Serban Ghenea Musical Assistance – Alex DeGroot, Jason Patterson (2), Kevin Luu Producer – Ian Kirkpatrick, Oscar Görres Producer [Vocals] – Mischke, Oscar Görres Programmed By – Ian Kirkpatrick, Oscar Görres Recorded By – Benjamin Rice, Oscar Görres Shaker – Oscar Görres Synth – Oscar Görres Written-By – Brittany Coney, Denisia Andrews, Ed Drewett, Ian Kirkpatrick, Oscar Görres":
+          - text: Hard To Forget Ya Backing Vocals –
+          - link "Brittany Coney":
+            - /url: /artist/5057606-Brittany-Coney
+          - text: ","
+          - link "Denisea \"Blu June\" Andrews":
+            - /url: /artist/5217066-Denisia-Andrews
+          - text: "*,"
+          - link "Ed Druett":
+            - /url: /artist/5217489-Ed-Druett
+          - text: ","
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Linda Pitchard":
+            - /url: /artist/5217493-Linda-Pitchard
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Bass –
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Co-producer –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: Engineer [Engineered For Mix] –
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Finger Snaps –
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Guitar –
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Musical Assistance –
+          - link "Alex DeGroot":
+            - /url: /artist/1748801-Alex-DeGroot
+          - text: ","
+          - link "Jason Patterson (2)":
+            - /url: /artist/1601578-Jason-Patterson-2
+          - text: ","
+          - link "Kevin Luu":
+            - /url: /artist/3940343-Kevin-Luu
+          - text: Producer –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Programmed By –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Shaker –
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Synth –
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+          - text: Written-By –
+          - link "Brittany Coney":
+            - /url: /artist/5057606-Brittany-Coney
+          - text: ","
+          - link "Denisia Andrews":
+            - /url: /artist/5217066-Denisia-Andrews
+          - text: ","
+          - link "Ed Drewett":
+            - /url: /artist/1806458-Ed-Drewett
+          - text: ","
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Oscar Görres":
+            - /url: /artist/1082368-Oscar-Görres
+        - cell "3:29"
+      - row "1-12 What You Need Backing Vocals – Carla Marie Williams, Tramaine Winfrey Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Tramaine Winfrey Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Sadaharu Yagi Written-By – Britney Spears, Carla Marie Williams, Simon Smith, Tramaine Winfrey 3:07":
+        - cell "1-12"
+        - cell
+        - cell "What You Need Backing Vocals – Carla Marie Williams, Tramaine Winfrey Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Tramaine Winfrey Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Sadaharu Yagi Written-By – Britney Spears, Carla Marie Williams, Simon Smith, Tramaine Winfrey":
+          - text: What You Need Backing Vocals –
+          - link "Carla Marie Williams":
+            - /url: /artist/1143663-Carla-Marie-Williams
+          - text: ","
+          - link "Tramaine Winfrey":
+            - /url: /artist/1929635-Tramaine-Winfrey
+          - text: Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Tramaine Winfrey":
+            - /url: /artist/1929635-Tramaine-Winfrey
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Sadaharu Yagi":
+            - /url: /artist/3379168-Sadaharu-Yagi
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Carla Marie Williams":
+            - /url: /artist/1143663-Carla-Marie-Williams
+          - text: ","
+          - link "Simon Smith":
+            - /url: /artist/240229-Simon-Smith
+          - text: ","
+          - link "Tramaine Winfrey":
+            - /url: /artist/1929635-Tramaine-Winfrey
+        - cell "3:07"
+      - row "1-13 Better Mixed By – Mark Stent Producer – Bloodpop Producer [Vocals] – Mischke Recorded By – Mischke Recorded By [Assistant] – Benny Faccone Written-By – Britney Spears, Julia Michaels, Justin Tranter, Michael Tucker (8) 3:09":
+        - cell "1-13"
+        - cell
+        - cell "Better Mixed By – Mark Stent Producer – Bloodpop Producer [Vocals] – Mischke Recorded By – Mischke Recorded By [Assistant] – Benny Faccone Written-By – Britney Spears, Julia Michaels, Justin Tranter, Michael Tucker (8)":
+          - text: Better Mixed By –
+          - link "Mark Stent":
+            - /url: /artist/211449-Mark-Stent
+          - text: Producer –
+          - link "Bloodpop":
+            - /url: /artist/4765716-Bloodpop
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Michael Tucker (8)":
+            - /url: /artist/6675668-Michael-Tucker-8
+        - cell "3:09"
+      - row "1-14 Change Your Mind (No Seas Cortés) Backing Vocals – Ina Forsberg, Julia Michaels Bass – Mattman & Robin Drums – Mattman & Robin Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Producer [Vocals] – Mattman & Robin, Mischke Programmed By – Mattman & Robin Recorded By – Benjamin Rice, Mattman & Robin Recorded By [Assistant] – Benny Faccone, Kevin Luu Synth – Mattman & Robin Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson 3:00":
+        - cell "1-14"
+        - cell
+        - cell "Change Your Mind (No Seas Cortés) Backing Vocals – Ina Forsberg, Julia Michaels Bass – Mattman & Robin Drums – Mattman & Robin Finger Snaps – Mattman & Robin Guitar – Mattman & Robin Handclaps – Mattman & Robin Mixed By – Serban Ghenea Percussion – Mattman & Robin Producer – Mattman & Robin Producer [Vocals] – Mattman & Robin, Mischke Programmed By – Mattman & Robin Recorded By – Benjamin Rice, Mattman & Robin Recorded By [Assistant] – Benny Faccone, Kevin Luu Synth – Mattman & Robin Written-By – Julia Michaels, Justin Tranter, Mattias Larsson (7), Robin Fredriksson":
+          - text: Change Your Mind (No Seas Cortés) Backing Vocals –
+          - link "Ina Forsberg":
+            - /url: /artist/5217497-Ina-Forsberg
+          - text: ","
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: Bass –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Drums –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Finger Snaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Guitar –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Handclaps –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Percussion –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Producer –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Producer [Vocals] –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: ","
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Programmed By –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: ","
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Recorded By [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: ","
+          - link "Kevin Luu":
+            - /url: /artist/3940343-Kevin-Luu
+          - text: Synth –
+          - link "Mattman & Robin":
+            - /url: /artist/3584535-Mattman-Robin
+          - text: Written-By –
+          - link "Julia Michaels":
+            - /url: /artist/3085529-Julia-Michaels
+          - text: ","
+          - link "Justin Tranter":
+            - /url: /artist/1945697-Justin-Tranter
+          - text: ","
+          - link "Mattias Larsson (7)":
+            - /url: /artist/3495771-Mattias-Larsson-7
+          - text: ","
+          - link "Robin Fredriksson":
+            - /url: /artist/2778722-Robin-Fredriksson
+        - cell "3:00"
+      - row "1-15 Liar Backing Vocals – Bryan Isaac, Kathleen Janzen, Livvi Franc, Vanessa Evigan, Victoria Evigan Engineer – Isaiah Tejada, James Royd Engineer [Assistant] – Benny Faccone Engineer [Engineered For Mix] – John Hanes Instrumentation By – Jason Evigan Mixed By – Serban Ghenea Producer – Jason Evigan Recorded By – Jason Evigan Vocals, Producer – Jason Evigan Written-By – Breyan Isaac, Danny Parker (3), Jason Evigan, Nash Overstreet 3:16":
+        - cell "1-15"
+        - cell
+        - cell "Liar Backing Vocals – Bryan Isaac, Kathleen Janzen, Livvi Franc, Vanessa Evigan, Victoria Evigan Engineer – Isaiah Tejada, James Royd Engineer [Assistant] – Benny Faccone Engineer [Engineered For Mix] – John Hanes Instrumentation By – Jason Evigan Mixed By – Serban Ghenea Producer – Jason Evigan Recorded By – Jason Evigan Vocals, Producer – Jason Evigan Written-By – Breyan Isaac, Danny Parker (3), Jason Evigan, Nash Overstreet":
+          - text: Liar Backing Vocals –
+          - link "Bryan Isaac":
+            - /url: /artist/5217492-Bryan-Isaac
+          - text: ","
+          - link "Kathleen Janzen":
+            - /url: /artist/5217494-Kathleen-Janzen
+          - text: ","
+          - link "Livvi Franc":
+            - /url: /artist/1454205-Livvi-Franc
+          - text: ","
+          - link "Vanessa Evigan":
+            - /url: /artist/5217491-Vanessa-Evigan
+          - text: ","
+          - link "Victoria Evigan":
+            - /url: /artist/5217496-Victoria-Evigan
+          - text: Engineer –
+          - link "Isaiah Tejada":
+            - /url: /artist/3846598-Isaiah-Tejada
+          - text: ","
+          - link "James Royd":
+            - /url: /artist/5217490-James-Royd
+          - text: Engineer [Assistant] –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: Engineer [Engineered For Mix] –
+          - link "John Hanes":
+            - /url: /artist/210636-John-Hanes
+          - text: Instrumentation By –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Mixed By –
+          - link "Serban Ghenea":
+            - /url: /artist/105435-Serban-Ghenea
+          - text: Producer –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Recorded By –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Vocals, Producer –
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: Written-By –
+          - link "Breyan Isaac":
+            - /url: /artist/2416574-Breyan-Isaac
+          - text: ","
+          - link "Danny Parker (3)":
+            - /url: /artist/3532488-Danny-Parker-3
+          - text: ","
+          - link "Jason Evigan":
+            - /url: /artist/2692453-Jason-Evigan
+          - text: ","
+          - link "Nash Overstreet":
+            - /url: /artist/2585715-Nash-Overstreet
+        - cell "3:16"
+      - row "1-16 If I'm Dancing Engineer [Assistant Engineered For Mix] – Jeff Jackson (7), Robin Florent Engineer [Engineered For Mix] – Chris Galland Mixed By – Manny Marroquin Musical Assistance – Benny Faccone, Erik Belz Producer – Ian Kirkpatrick Producer [Vocals] – Ian Kirkpatrick, Mischke Recorded By – Ian Kirkpatrick Recorded By [Additionnal Vocals] – Benjamin Rice Written-By – Chantal Kreviazuk, Ian Kirkpatrick, Simon Wilcox (2), Sterling Fox 3:24":
+        - cell "1-16"
+        - cell
+        - cell "If I'm Dancing Engineer [Assistant Engineered For Mix] – Jeff Jackson (7), Robin Florent Engineer [Engineered For Mix] – Chris Galland Mixed By – Manny Marroquin Musical Assistance – Benny Faccone, Erik Belz Producer – Ian Kirkpatrick Producer [Vocals] – Ian Kirkpatrick, Mischke Recorded By – Ian Kirkpatrick Recorded By [Additionnal Vocals] – Benjamin Rice Written-By – Chantal Kreviazuk, Ian Kirkpatrick, Simon Wilcox (2), Sterling Fox":
+          - text: If I'm Dancing Engineer [Assistant Engineered For Mix] –
+          - link "Jeff Jackson (7)":
+            - /url: /artist/4311890-Jeff-Jackson-7
+          - text: ","
+          - link "Robin Florent":
+            - /url: /artist/4864753-Robin-Florent
+          - text: Engineer [Engineered For Mix] –
+          - link "Chris Galland":
+            - /url: /artist/1608079-Chris-Galland
+          - text: Mixed By –
+          - link "Manny Marroquin":
+            - /url: /artist/67636-Manny-Marroquin
+          - text: Musical Assistance –
+          - link "Benny Faccone":
+            - /url: /artist/129227-Benny-Faccone
+          - text: ","
+          - link "Erik Belz":
+            - /url: /artist/5217495-Erik-Belz
+          - text: Producer –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: Producer [Vocals] –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: Recorded By [Additionnal Vocals] –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Written-By –
+          - link "Chantal Kreviazuk":
+            - /url: /artist/267855-Chantal-Kreviazuk
+          - text: ","
+          - link "Ian Kirkpatrick":
+            - /url: /artist/1796807-Ian-Kirkpatrick
+          - text: ","
+          - link "Simon Wilcox (2)":
+            - /url: /artist/894529-Simon-Wilcox-2
+          - text: ","
+          - link "Sterling Fox":
+            - /url: /artist/887155-Sterling-Fox
+        - cell "3:24"
+      - row "1-17 Coupure Électrique Co-producer [Vocals] – Nathalia Marshall Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Lance Eric Shipp Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Britney Spears, Lance Eric Shipp, Nathalia Marshall, Rachel Kennedy 2:20":
+        - cell "1-17"
+        - cell
+        - cell "Coupure Électrique Co-producer [Vocals] – Nathalia Marshall Mixed By – Jaycen Joshua Mixed By [Assistant] – Dave Nakaji*, Maddox Chimm Producer – Lance Eric Shipp Producer [Vocals] – Mischke Recorded By – Benjamin Rice Recorded By [Assistant] – Kevin Luu Written-By – Britney Spears, Lance Eric Shipp, Nathalia Marshall, Rachel Kennedy":
+          - text: Coupure Électrique Co-producer [Vocals] –
+          - link "Nathalia Marshall":
+            - /url: /artist/5217064-Nathalia-Marshall
+          - text: Mixed By –
+          - link "Jaycen Joshua":
+            - /url: /artist/285031-Jaycen-Joshua
+          - text: Mixed By [Assistant] –
+          - link "Dave Nakaji":
+            - /url: /artist/3385038-David-Nakaji
+          - text: "*,"
+          - link "Maddox Chimm":
+            - /url: /artist/3904409-Maddox-Chimm
+          - text: Producer –
+          - link "Lance Eric Shipp":
+            - /url: /artist/5217067-Lance-Eric-Shipp
+          - text: Producer [Vocals] –
+          - link "Mischke":
+            - /url: /artist/391372-Mischke
+          - text: Recorded By –
+          - link "Benjamin Rice":
+            - /url: /artist/3764459-Benjamin-Rice
+          - text: Recorded By [Assistant] –
+          - link "Kevin Luu":
+            - /url: /artist/3940343-Kevin-Luu
+          - text: Written-By –
+          - link "Britney Spears":
+            - /url: /artist/15687-Britney-Spears
+          - text: ","
+          - link "Lance Eric Shipp":
+            - /url: /artist/5217067-Lance-Eric-Shipp
+          - text: ","
+          - link "Nathalia Marshall":
+            - /url: /artist/5217064-Nathalia-Marshall
+          - text: ","
+          - link "Rachel Kennedy":
+            - /url: /artist/5217065-Rachel-Kennedy
+        - cell "2:20"
+      - row "Bonus Track For Japan":
+        - cell
+        - cell
+        - cell "Bonus Track For Japan"
+        - cell
+      - row "1-18 Mood Ring 3:50":
+        - cell "1-18"
+        - cell
+        - cell "Mood Ring"
+        - cell "3:50"
+      - row "Japan Tour Edition Bonus CD":
+        - cell
+        - cell
+        - cell "Japan Tour Edition Bonus CD"
+        - cell
+      - row "2-1 Work B**ch 4:08":
+        - cell "2-1"
+        - cell
+        - cell "Work B**ch"
+        - cell "4:08"
+      - row "2-2 Womanizer 3:44":
+        - cell "2-2"
+        - cell
+        - cell "Womanizer"
+        - cell "3:44"
+      - row "2-3 Piece Of Me 3:32":
+        - cell "2-3"
+        - cell
+        - cell "Piece Of Me"
+        - cell "3:32"
+      - row "2-4 Me Against The Music (Dragon Man Mix) Remix – Dragon Man* 3:45":
+        - cell "2-4"
+        - cell
+        - cell "Me Against The Music (Dragon Man Mix) Remix – Dragon Man*":
+          - text: Me Against The Music (Dragon Man Mix) Remix –
+          - link "Dragon Man":
+            - /url: /artist/292093-Taan-Dragon-Man-Newjam
+          - text: "*"
+        - cell "3:45"
+      - row "2-5 Gimme More 4:12":
+        - cell "2-5"
+        - cell
+        - cell "Gimme More"
+        - cell "4:12"
+      - row "2-6 Everytime 3:51":
+        - cell "2-6"
+        - cell
+        - cell "Everytime"
+        - cell "3:51"
+      - row "2-7 ...Baby One More Time 3:31":
+        - cell "2-7"
+        - cell
+        - cell "...Baby One More Time"
+        - cell "3:31"
+      - row "2-8 Oops!...I Did It Again 3:32":
+        - cell "2-8"
+        - cell
+        - cell "Oops!...I Did It Again"
+        - cell "3:32"
+      - row "2-9 Boys 3:28":
+        - cell "2-9"
+        - cell
+        - cell "Boys"
+        - cell "3:28"
+      - row "2-10 Get Naked (I Got A Plan) 4:46":
+        - cell "2-10"
+        - cell
+        - cell "Get Naked (I Got A Plan)"
+        - cell "4:46"
+      - row "2-11 I'm A Slave 4 U 3:25":
+        - cell "2-11"
+        - cell
+        - cell "I'm A Slave 4 U"
+        - cell "3:25"
+      - row "2-12 Freakshow 2:56":
+        - cell "2-12"
+        - cell
+        - cell "Freakshow"
+        - cell "2:56"
+      - row "2-13 Do Somethin' 3:23":
+        - cell "2-13"
+        - cell
+        - cell "Do Somethin'"
+        - cell "3:23"
+      - row "2-14 Circus 3:12":
+        - cell "2-14"
+        - cell
+        - cell "Circus"
+        - cell "3:12"
+      - row "2-15 If U Seek Amy 3:37":
+        - cell "2-15"
+        - cell
+        - cell "If U Seek Amy"
+        - cell "3:37"
+      - row "2-16 Breathe On Me 3:44":
+        - cell "2-16"
+        - cell
+        - cell "Breathe On Me"
+        - cell "3:44"
+      - row "2-17 Touch Of My Hand 4:20":
+        - cell "2-17"
+        - cell
+        - cell "Touch Of My Hand"
+        - cell "4:20"
+      - row "2-18 Toxic 3:20":
+        - cell "2-18"
+        - cell
+        - cell "Toxic"
+        - cell "3:20"
+      - row "2-19 Stronger 3:24":
+        - cell "2-19"
+        - cell
+        - cell "Stronger"
+        - cell "3:24"
+      - row "2-20 (You Drive Me) Crazy 3:19":
+        - cell "2-20"
+        - cell
+        - cell "(You Drive Me) Crazy"
+        - cell "3:19"
+      - row "2-21 Till The World Ends 3:59":
+        - cell "2-21"
+        - cell
+        - cell "Till The World Ends"
+        - cell "3:59"
+  - heading "Companies, etc." [level=2]
+  - list:
+    - listitem:
+      - text: Phonographic Copyright ℗ –
+      - link "RCA Records":
+        - /url: /label/29656-RCA-Records
+    - listitem:
+      - text: Copyright © –
+      - link "RCA Records":
+        - /url: /label/29656-RCA-Records
+    - listitem:
+      - text: Record Company –
+      - link "Sony Music Entertainment":
+        - /url: /label/29073-Sony-Music-Entertainment
+    - listitem:
+      - text: Record Company –
+      - link "Sony Music Labels":
+        - /url: /label/681346-Sony-Music-Labels
+    - listitem:
+      - text: Manufactured By –
+      - link "Sony Music Labels Inc.":
+        - /url: /label/681762-Sony-Music-Labels-Inc
+  - heading "Credits" [level=2]
+  - list:
+    - listitem:
+      - text: A&R –
+      - link "Karen Kwak":
+        - /url: /artist/1310958-Karen-Kwak
+    - listitem:
+      - text: Art Direction –
+      - link "Gavin Taylor (3)":
+        - /url: /artist/5603588-Gavin-Taylor-3
+    - listitem:
+      - text: Creative Director –
+      - link "Erwin Gorostiza":
+        - /url: /artist/1829923-Erwin-Gorostiza
+    - listitem:
+      - text: Design –
+      - link "Gavin Taylor (3)":
+        - /url: /artist/5603588-Gavin-Taylor-3
+    - listitem:
+      - text: Executive-Producer –
+      - link "Karen Kwak":
+        - /url: /artist/1310958-Karen-Kwak
+    - listitem:
+      - text: Management –
+      - link "Adam Leber":
+        - /url: /artist/1700417-Adam-Leber
+      - text: ","
+      - link "Florence Tse":
+        - /url: /artist/3568384-Florence-Tse
+      - text: ","
+      - link "Larry Rudolph":
+        - /url: /artist/1293125-Larry-Rudolph
+    - listitem:
+      - text: Mastered By –
+      - link "Dave Kutch":
+        - /url: /artist/410696-Dave-Kutch
+    - listitem:
+      - text: Photography By –
+      - link "Randee St. Nicholas":
+        - /url: /artist/1916720-Randee-St-Nicholas
+  - heading "Notes" [level=2]
+  - text: Disc 2 is a bonus CD with tracks, reproducing an almost exact set list from her tour. Tracks 2 to 9, 11, 14, 18 and 19 on disc 2 are remastered versions.
+  - heading "Barcode and Other Identifiers" [level=2]
+  - list:
+    - listitem: "Barcode (Scanned): 4547366311228"
+    - listitem: "Barcode (Text): 4 547366 311228"
+    - listitem: "Matrix / Runout (Disc 1): PLDA-3741 1"
+    - listitem: "Mastering SID Code (Disc 1): IFPI L275"
+    - listitem: "Matrix / Runout (Disc 2): PLDA-3960 1"
+    - listitem: "Mastering SID Code (Disc 2): IFPI L276"
+    - listitem: "Mould SID Code (Discs 1 & 2): IFPI 455Z"
+    - listitem: "Rights Society: JASRAC"
+    - listitem: "Other (Catalog number - disc 1): SICP 5426"
+    - listitem: "Other (Catalog number - disc 2): SICP 5427"
+  - heading "Other Versions" [level=2]
+  - img "loading"
+  - heading "Recommendations" [level=2]
+  - img "loading"
+  - heading "Reviews" [level=2]
+  - img "loading"
+  - heading "Release" [level=2]
+  - button "Copy Release Code": "[r10364956]"
+  - link "Edit Release":
+    - /url: /release/10364956-Glory-Japan-Tour-Edition/history#latest
+  - link "See all versions":
+    - /url: /master/1047331-Britney-Spears-Glory
+  - text: New Submission
+  - heading "For sale on Discogs" [level=2]
+  - link "Sell a Copy":
+    - /url: /sell/post/10364956
+    - text: Sell a copy
+  - heading [level=2]
+  - link "9 copies":
+    - /url: /sell/release/10364956
+  - text: from €75.97
+  - link "Shop now":
+    - /url: /sell/release/10364956
+  - heading "Statistics" [level=2]
+  - list:
+    - listitem:
+      - text: "Have:"
+      - link "260":
+        - /url: /release/stats/10364956
+    - listitem:
+      - text: "Want:"
+      - link "188":
+        - /url: /release/stats/10364956
+    - listitem: "Avg Rating: 4.65 / 5"
+    - listitem:
+      - text: "Ratings:"
+      - link "17":
+        - /url: /release/stats/10364956
+  - list:
+    - listitem:
+      - text: "Last Sold:"
+      - link "Apr 27, 2025":
+        - /url: /sell/history/10364956
+        - time: Apr 27, 2025
+    - listitem: "Low: €25.78"
+    - listitem: "Median: €53.40"
+    - listitem: "High: €178.00"
+  - button "Rate this release 1 star"
+  - button "Rate this release 2 stars"
+  - button "Rate this release 3 stars"
+  - button "Rate this release 4 stars"
+  - button "Rate this release 5 stars"
+  - button "Remove Rating" [disabled]
+  - button "Share"
+  - button "Add to Collection"
+  - button "Add to Wantlist"
+  - heading "In Collection" [level=3]
+  - text: Added 28 hours ago
+  - button "Remove"
+  - text: Media Condition Edit
+  - combobox "Media Condition":
+    - option [selected]
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Sleeve Condition Edit
+  - combobox "Sleeve Condition":
+    - option [selected]
+    - option "Generic"
+    - option "No Cover"
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Notes
+  - button "Edit Notes": Edit
+  - text: Folder Uncategorized
+  - combobox "Folder"
+  - heading "In Collection" [level=3]
+  - text: Added 2 hours ago
+  - button "Remove"
+  - text: Media Condition Edit
+  - combobox "Media Condition":
+    - option [selected]
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Sleeve Condition Edit
+  - combobox "Sleeve Condition":
+    - option [selected]
+    - option "Generic"
+    - option "No Cover"
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Notes
+  - button "Edit Notes": Edit
+  - text: Folder Uncategorized
+  - combobox "Folder"
+  - heading "In Collection" [level=3]
+  - text: Added just now
+  - button "Remove"
+  - text: Media Condition Edit
+  - combobox "Media Condition":
+    - option [selected]
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Sleeve Condition Edit
+  - combobox "Sleeve Condition":
+    - option [selected]
+    - option "Generic"
+    - option "No Cover"
+    - option "Mint (M)"
+    - option "Near Mint (NM or M-)"
+    - option "Very Good Plus (VG+)"
+    - option "Very Good (VG)"
+    - option "Good Plus (G+)"
+    - option "Good (G)"
+    - option "Fair (F)"
+    - option "Poor (P)"
+  - text: Notes
+  - button "Edit Notes": Edit
+  - text: Folder Uncategorized
+  - combobox "Folder"
+  - heading "Videos (3)" [level=2]
+  - img
+  - link "Edit":
+    - /url: /release/10364956-/videos/update
+  - button "Play":
+    - img "Play"
+  - list:
+    - listitem:
+      - button "Play Britney Spears - Make Me... ft. G-Eazy (Official Video) 4:54":
+        - img "Play"
+        - text: Britney Spears - Make Me... ft. G-Eazy (Official Video) 4:54
+    - listitem:
+      - button "Play Britney Spears - Slumber Party ft. Tinashe (Official Video) 4:05":
+        - img "Play"
+        - text: Britney Spears - Slumber Party ft. Tinashe (Official Video) 4:05
+    - listitem:
+      - button "Play Britney Spears - Swimming In The Stars (Visualizer) 3:22":
+        - img "Play"
+        - text: Britney Spears - Swimming In The Stars (Visualizer) 3:22
+  - heading "Lists" [level=2]
+  - button "Expand section"
+  - heading "Contributors" [level=2]
+  - link "japan-cd":
+    - /url: /user/japan-cd
+  - text: ","
+  - link "kai81":
+    - /url: /user/kai81
+  - text: ","
+  - link "Brandonbtch":
+    - /url: /user/Brandonbtch
+  - text: ","
+  - link "olcuriosity":
+    - /url: /user/olcuriosity
+  - text: ","
+  - link "alxboy21":
+    - /url: /user/alxboy21
+  - text: ","
+  - link "in-vinc-ible":
+    - /url: /user/in-vinc-ible
+  - text: ","
+  - link "astroman1974":
+    - /url: /user/astroman1974
+  - text: ","
+  - link "MannerHeikki":
+    - /url: /user/MannerHeikki
+  - text: ","
+  - link "ShireenPeaches":
+    - /url: /user/ShireenPeaches
+  - text: ","
+  - link "choan":
+    - /url: /user/choan
+  - text: ","
+  - link "melmaq":
+    - /url: /user/melmaq
+  - text: ","
+  - link "Thao8382":
+    - /url: /user/Thao8382
+  - text: ","
+  - link "Kendall99-Japan":
+    - /url: /user/Kendall99-Japan
+  - text: ","
+  - link "glennas94":
+    - /url: /user/glennas94
+  - text: ","
+  - link "erikcmujica":
+    - /url: /user/erikcmujica
+  - link "Report Suspicious Activity":
+    - /url: /release/10364956/report
+- contentinfo:
+  - navigation "Footer":
+    - list:
+      - listitem:
+        - button "About Discogs" [disabled] [expanded]
+        - list:
+          - listitem:
+            - link "About Discogs":
+              - /url: /about
+          - listitem:
+            - link "Discogs Digs":
+              - /url: https://www.discogs.com/digs
+          - listitem:
+            - link "Careers":
+              - /url: /careers
+          - listitem:
+            - link "API":
+              - /url: /developers
+          - listitem:
+            - link "Status":
+              - /url: https://status.discogs.com
+    - list:
+      - listitem:
+        - button "Help Is Here" [disabled] [expanded]
+        - list:
+          - listitem:
+            - link "Help & Support":
+              - /url: https://support.discogs.com
+          - listitem:
+            - link "Forum":
+              - /url: /forum
+          - listitem:
+            - button "Keyboard Shortcuts"
+          - listitem:
+            - link "Database Guidelines":
+              - /url: https://support.discogs.com/hc/articles/360004016474-Overview-of-Submission-Guidelines-for-Releases
+          - listitem:
+            - link "Discogs Shipping":
+              - /url: https://www.discogs.com/shipping
+          - listitem:
+            - link "Start Selling":
+              - /url: https://www.discogs.com/selling
+    - list:
+      - listitem:
+        - button "Join In" [disabled] [expanded]
+        - list:
+          - listitem:
+            - link "Get Started":
+              - /url: https://www.discogs.com/getstarted/
+          - listitem:
+            - link "Contribute":
+              - /url: https://www.discogs.com/help/doc/contributing
+          - listitem:
+            - link "Add Release":
+              - /url: https://www.discogs.com/release/add
+          - listitem:
+            - link "Contributor List":
+              - /url: https://www.discogs.com/stats/contributors
+          - listitem:
+            - link "Help Translate":
+              - /url: https://www.discogs.com/group/thread/963554
+          - listitem:
+            - link "Visit Wantlister":
+              - /url: https://wantlister.discogs.com
+          - listitem:
+            - link "Advertise With Us":
+              - /url: https://www.discogs.com/company/partnership-and-advertising-inquiries/
+    - list:
+      - listitem: Follow Us
+      - listitem:
+        - list:
+          - listitem:
+            - link "Discogs on Facebook":
+              - /url: https://www.facebook.com/discogs
+              - img "Discogs on Facebook"
+          - listitem:
+            - link "Discogs on Instagram":
+              - /url: https://www.instagram.com/discogs/
+              - img "Discogs on Instagram"
+          - listitem:
+            - link "Discogs on YouTube":
+              - /url: https://www.youtube.com/channel/UCIJC0XjREJDO7ZTb9Nx7zfw
+              - img "Discogs on YouTube"
+          - listitem:
+            - link "Discogs on TikTok":
+              - /url: https://www.tiktok.com/@discogs
+              - img "Discogs on TikTok"
+          - listitem:
+            - link "Discogs on LinkedIn":
+              - /url: https://www.linkedin.com/company/discogs/
+              - img "Discogs on LinkedIn"
+      - listitem:
+        - list:
+          - listitem: On The Go
+          - listitem:
+            - link "Download now from the App Store":
+              - /url: https://itunes.apple.com/app/apple-store/id1036449551?pt=117888292&ct=discogs-app-page&mt=8
+              - img "Download now from the App Store"
+          - listitem:
+            - link "Download now from Google Play":
+              - /url: https://play.google.com/store/apps/details?id=com.discogs.app&referrer=utm_source%3Ddiscogs-app-page
+              - img "Download now from Google Play"
+  - navigation "Legal":
+    - link "Discogs":
+      - /url: /
+      - img "Discogs"
+    - text: © 2025 Discogs®
+    - list:
+      - listitem:
+        - button "Cookies Settings"
+      - listitem:
+        - link "Cookie Policy":
+          - /url: https://www.discogs.com/help/doc/cookie-policy
+      - listitem:
+        - link "Terms of Service":
+          - /url: https://www.discogs.com/help/doc/terms-of-service
+      - listitem:
+        - link "Privacy Policy":
+          - /url: https://www.discogs.com/help/doc/privacy-policy
+      - listitem:
+        - link "California Privacy Notice":
+          - /url: https://support.discogs.com/hc/articles/360039846494-California-Privacy-Notice
+      - listitem:
+        - link "Accessibility Statement":
+          - /url: https://support.discogs.com/hc/en-us/articles/360017786278-Accessibility-Statement
+      - listitem:
+        - link "Impressum":
+          - /url: https://support.discogs.com/hc/en-us/articles/34534023466125-Impressum
+  - text: English
+  - combobox "English":
+    - option "Deutsch"
+    - option "English" [selected]
+    - option "Español"
+    - option "Français"
+    - option "Italiano"
+    - option "日本語"
+    - option "한국어"
+    - option "Português (Brasil)"
+    - option "Русский"
+```
+
+# Test source
+
+```ts
+   1 | import { expect, Page } from '@playwright/test';
+   2 | import { Environment } from '../../env';
+   3 | import { Endpoints } from '../../utils/constants/endpoints';
+   4 | import { BasePage } from './base.page';
+   5 | import { ReleaseResponse } from '../../models/api.models/release.response';
+   6 | import { UIDataHelper } from '../../utils/ui.utils/ui.data.helper';
+   7 |
+   8 | export class ReleasePage extends BasePage {
+   9 |   private url = `${Environment.BASE_UI_URL}${Endpoints.RELEASE}`;
+  10 |
+  11 |   private buttonsText = {
+  12 |     addToCollectionText: 'Add to Collection',
+  13 |   };
+  14 |
+  15 |   private pageElements = {
+  16 |     blockTrackInfo: this.page.locator('.body_utiDG'),
+  17 |     trackList: this.page.locator('#release-tracklist'),
+  18 |     releaseStats: this.page.locator('#release-stats'),
+  19 |     inCollectionTable: this.page
+  20 |       .locator('.box_PFmyl')
+  21 |       .filter({ has: this.page.locator('h3', { hasText: 'In Collection' }) })
+  22 |       .first(),
+  23 |   };
+  24 |
+  25 |   private buttons = {
+  26 |     addToCollection: this.page.locator('button', { hasText: this.buttonsText.addToCollectionText }),
+  27 |     removeButton: this.pageElements.inCollectionTable.locator('button.remove_rguzu'),
+  28 |   };
+  29 |
+  30 |   private releaseElements = {
+  31 |     releaseTitle: this.page.locator('h1.title_Brnd1'),
+  32 |     releaseArtist: this.page.locator('.link_PKPcS').first(),
+  33 |     releaseLabel: this.page.locator('.table_c5ftk tr:nth-child(1) td'),
+  34 |     releaseFormat: this.page.locator('.table_c5ftk tr:nth-child(2) td'),
+  35 |     releaseCountry: this.page.locator('.table_c5ftk tr:nth-child(3) td'),
+  36 |     releaseYear: this.page.locator('.table_c5ftk tr:nth-child(4) td'),
+  37 |     releaseGenre: this.page.locator('.table_c5ftk tr:nth-child(5) td'),
+  38 |     releaseStyle: this.page.locator('.table_c5ftk tr:nth-child(6) td'),
+  39 |   };
+  40 |
+  41 |   constructor(page: Page) {
+  42 |     super(page);
+  43 |   }
+  44 |
+  45 |   async goto(releaseID: number) {
+  46 |     await this.gotoByUrl(`${this.url}${releaseID}`);
+  47 |   }
+  48 |
+  49 |   async verifyReleasePage() {
+  50 |     expect(this.pageElements.blockTrackInfo).toBeVisible();
+  51 |     expect(this.pageElements.trackList).toBeVisible();
+  52 |     expect(this.pageElements.releaseStats).toBeVisible();
+  53 |   }
+  54 |
+  55 |   async verifyReleaseStructure(release: ReleaseResponse) {
+  56 |     const info = UIDataHelper.convertReleaseInfo(release);
+  57 |
+  58 |     expect.soft(this.releaseElements.releaseTitle).toContainText(info.title);
+  59 |     expect.soft(this.releaseElements.releaseArtist).toContainText(info.artist);
+  60 |     expect.soft(this.releaseElements.releaseLabel).toContainText(info.label);
+  61 |     for (const part of info.formatParts) {
+  62 |       await expect.soft(this.releaseElements.releaseFormat).toContainText(part);
+  63 |     }
+  64 |     expect.soft(this.releaseElements.releaseCountry).toContainText(info.country);
+  65 |     expect.soft(this.releaseElements.releaseYear).toContainText(info.year);
+  66 |     expect.soft(this.releaseElements.releaseGenre).toContainText(info.genre);
+  67 |     expect.soft(this.releaseElements.releaseStyle).toContainText(info.style);
+  68 |   }
+  69 |
+  70 |   async addReleaseToCollectionAndVerifyNotification() {
+  71 |     await this.buttons.addToCollection.click();
+  72 |     expect(this.pageElements.inCollectionTable).toBeVisible();
+  73 |   }
+  74 |
+  75 |   async removeFromCollectionAndVerifyTable() {
+  76 |     await this.buttons.removeButton.click();
+> 77 |     await expect(this.pageElements.inCollectionTable).toBeHidden();
+     |                                                       ^ Error: Timed out 5000ms waiting for expect(locator).toBeHidden()
+  78 |   }
+  79 | }
+  80 |
+```

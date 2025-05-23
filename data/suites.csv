@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","6","Click to add collection button check notification and remove it","ui","Fri May 23 15:35:59 UTC 2025","failed","Fri May 23 15:35:59 UTC 2025","Release page tests","src/ui/tests/release.spec.ts","",""
+"","7","Login flow with valid credentials","ui","Fri May 23 15:35:51 UTC 2025","failed","Fri May 23 15:35:51 UTC 2025","Check login with correct and incorrect credentials","src/ui/tests/login.spec.ts","",""
+"","7","Checking the display of the Wantlist page for an authorized user","ui","Fri May 23 15:36:02 UTC 2025","failed","Fri May 23 15:36:02 UTC 2025","Wantlist","src/ui/tests/wantlist.spec.ts","",""
+"","7","Login flow with unknown credentials","ui","Fri May 23 15:35:54 UTC 2025","failed","Fri May 23 15:35:54 UTC 2025","Check login with correct and incorrect credentials","src/ui/tests/login.spec.ts","",""
+"","10536","Click remove on the notification and check hidden notification","ui","Fri May 23 14:20:32 UTC 2025","failed","Fri May 23 14:20:42 UTC 2025","Release page tests","src\ui\tests\release.spec.ts","",""
+"","4344","Click to add collection button and check notification","ui","Fri May 23 14:18:41 UTC 2025","passed","Fri May 23 14:18:45 UTC 2025","Release page tests","src\ui\tests\release.spec.ts","",""
+"","7","Structure release test","ui","Fri May 23 15:35:56 UTC 2025","failed","Fri May 23 15:35:57 UTC 2025","Release page tests","src/ui/tests/release.spec.ts","",""
