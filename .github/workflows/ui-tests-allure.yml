@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+
       - run: npm ci
       - run: npx playwright install chromium
       - run: npm install -g allure-commandline --save-dev
@@ -25,9 +27,11 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+
       - run: npm ci
       - run: npx playwright install chromium
 
@@ -51,12 +55,13 @@ jobs:
           name: allure-results
           path: ./allure-results
 
-    report:
+  report:
     name: Generate and Publish Allure Report
     runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v4
+
       - run: npm install -g allure-commandline --save-dev
 
       - name: Download Allure Results
