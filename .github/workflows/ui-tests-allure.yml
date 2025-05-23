@@ -75,14 +75,14 @@ jobs:
 
       - name: Copy report to unique path
         run: |
-          mkdir -p ./allure-report/latest
-          cp -r ./allure-report/* ./allure-report/latest/
+          mkdir -p ./publish/latest
+          cp -r ./allure-report/* ./publish/latest/
 
       - name: Deploy Allure Report to allure-report branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish_dir: ./publish
           publish_branch: allure-report
           force_orphan: true
 
