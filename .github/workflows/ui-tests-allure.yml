@@ -68,10 +68,13 @@ jobs:
       - name: Generate Allure Report
         run: allure generate ./allure-results --clean -o ./allure-report
 
-      - name: Prepare report for publishing
+      - name: Set report folder by date
+        run: echo "REPORT_FOLDER=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Copy report for GitHub Pages
         run: |
-          mkdir -p ./publish
-          cp -r ./allure-report/* ./publish/
+          mkdir -p ./publish/reports/${REPORT_FOLDER}
+          cp -r ./allure-report/* ./publish/reports/${REPORT_FOLDER}/
 
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -82,4 +85,4 @@ jobs:
           force_orphan: true
 
       - name: Print Allure Report URL
-        run: echo "View report:https://artemguschin8876.github.io/discogs-api-tests/index.html?t=$(date +%s)"
+        run: echo "View report:https://artemguschin8876.github.io/discogs-api-tests/reports/${REPORT_FOLDER}/index.html"
