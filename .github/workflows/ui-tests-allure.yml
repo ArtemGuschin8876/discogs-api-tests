@@ -70,7 +70,13 @@ jobs:
           name: allure-results
           path: ./allure-results
 
-      - run: allure generate ./allure-results --clean -o ./allure-report
+      - name: Generate Allure Report
+        run: allure generate ./allure-results --clean -o ./allure-report
+
+      - name: Copy report to unique path
+        run: |
+          mkdir -p ./allure-report/latest
+          cp -r ./allure-report/* ./allure-report/latest/
 
       - name: Deploy Allure Report to allure-report branch
         uses: peaceiris/actions-gh-pages@v3
@@ -80,4 +86,5 @@ jobs:
           publish_branch: allure-report
           force_orphan: true
 
-      - run: echo "View Allure report:https://artemguschin8876.github.io/discogs-api-tests/?t=$(date +%s)"
+      - name: Print Allure Report URL
+        run: echo "View Allure report:https://artemguschin8876.github.io/discogs-api-tests/latest/index.html?t=$(date +%s)"
