@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    name: Build project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +20,6 @@ jobs:
       - run: npm install -g allure-commandline --save-dev
 
   test:
-    name: Run Playwright Tests
     runs-on: ubuntu-latest
     needs: build
     continue-on-error: true
@@ -36,8 +34,7 @@ jobs:
       - run: npx playwright install chromium
 
       - name: Clean previous Allure results
-        run: |
-          if [ -d "./allure-results" ]; then rm -rf ./allure-results; fi
+        run: rm -rf ./allure-results
 
       - name: Run Playwright tests
         run: npx playwright test src/ui/tests
@@ -56,7 +53,6 @@ jobs:
           path: ./allure-results
 
   report:
-    name: Generate and Publish Allure Report
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -73,21 +69,13 @@ jobs:
       - name: Generate Allure Report
         run: allure generate ./allure-results --clean -o ./allure-report
 
-      - name: Set report folder by date
-        run: echo "REPORT_FOLDER=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
-      - name: Copy report for GitHub Pages
-        run: |
-          mkdir -p ./publish/reports/${{ env.REPORT_FOLDER }}
-          cp -r ./allure-report/* ./publish/reports/${{ env.REPORT_FOLDER }}/
-
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./publish
+          publish_dir: ./allure-report
           publish_branch: allure-report
           force_orphan: true
 
       - name: Print Allure Report URL
-        run: echo "View report:https://artemguschin8876.github.io/discogs-api-tests/reports/${{ env.REPORT_FOLDER }}/index.html"
+        run: echo "View report:https://artemguschin8876.github.io/discogs-api-tests/index.html"
