@@ -1,5 +1,5 @@
 import { test } from '../../fixtures/fixtures';
-import { PageManager } from '../pages/page.manager';
+import { TestTags } from '../../utils/constants/tags';
 
 test.describe('Release page tests', async () => {
   test.beforeEach(async ({ pageManager, randomReleaseID }) => {
@@ -7,19 +7,22 @@ test.describe('Release page tests', async () => {
     await pageManager.releasePage.acceptCookie();
   });
 
-  test('Structure release test', async ({ pageManager, randomFullRelease }) => {
-    await pageManager.releasePage.verifyReleasePage();
-    await pageManager.releasePage.verifyReleaseStructure(randomFullRelease);
-  });
+  test(
+    'Structure release test',
+    { tag: [TestTags.UI, TestTags.POSITIVE] },
+    async ({ pageManager, randomFullRelease }) => {
+      await pageManager.releasePage.verifyReleasePage();
+      await pageManager.releasePage.verifyReleaseStructure(randomFullRelease);
+    }
+  );
 
-  test('Click to add collection button and check notification', async ({ pageManager }) => {
-    await pageManager.releasePage.addReleaseToCollectionAndVerifyNotification();
-  });
-
-  test('Click remove on the notification and check hidden notification', async ({
-    pageManager,
-  }) => {
-    await pageManager.releasePage.addReleaseToCollectionAndVerifyNotification();
-    await pageManager.releasePage.removeFromCollectionAndVerifyTable();
-  });
+  test(
+    'Click to add collection button check notification and remove it',
+    { tag: [TestTags.UI, TestTags.POSITIVE] },
+    async ({ pageManager }) => {
+      await pageManager.releasePage.clearCollectionTableIfExists();
+      await pageManager.releasePage.addReleaseToCollectionAndVerifyNotification();
+      await pageManager.releasePage.removeFromCollectionAndVerifyTable();
+    }
+  );
 });

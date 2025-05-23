@@ -16,12 +16,15 @@ export class ReleasePage extends BasePage {
     blockTrackInfo: this.page.locator('.body_utiDG'),
     trackList: this.page.locator('#release-tracklist'),
     releaseStats: this.page.locator('#release-stats'),
-    inCollectionTable: this.page.locator('.box_PFmyl'),
+    inCollectionTable: this.page
+      .locator('.box_PFmyl')
+      .filter({ has: this.page.locator('h3', { hasText: 'In Collection' }) })
+      .first(),
   };
 
   private buttons = {
-    addToCollection: this.page.locator('button', { hasText: this.buttonsText.addToCollectionText }),
-    removeButton: this.page.locator('button', { hasText: 'Remove' }),
+    addToCollection: this.page.getByRole('button', { name: 'Add to Collection' }),
+    removeButton: this.pageElements.inCollectionTable.locator('button.remove_rguzu'),
   };
 
   private releaseElements = {
@@ -71,6 +74,12 @@ export class ReleasePage extends BasePage {
 
   async removeFromCollectionAndVerifyTable() {
     await this.buttons.removeButton.click();
-    expect(this.pageElements.inCollectionTable).toBeHidden();
+    await expect(this.pageElements.inCollectionTable).toBeHidden();
+  }
+
+  async clearCollectionTableIfExists() {
+    while (await this.buttons.removeButton.count()) {
+      await this.buttons.removeButton.first().click();
+    }
   }
 }

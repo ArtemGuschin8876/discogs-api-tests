@@ -2,6 +2,6 @@ export enum TestTags {
   UI = '@UI',
   API = '@API',
   LOGIN = '@Login',
-  POSITIVE = '@Posirive',
+  POSITIVE = '@Positive',
   NEGATIVE = '@Negative',
 }
