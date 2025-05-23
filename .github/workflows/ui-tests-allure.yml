@@ -11,13 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-
       - run: npm ci
-
       - run: npx playwright install chromium
 
   test:
@@ -27,15 +24,11 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-
       - run: npm ci
-
       - run: npx playwright install chromium
-
       - run: npx playwright test src/ui/tests --reporter=line
         env:
           BASE_UI_URL: https://www.discogs.com/
@@ -43,14 +36,12 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           LABEL_ID: '681346'
-
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: ./allure-results
-
       - name: Upload Traces
         if: always()
         uses: actions/upload-artifact@v4
@@ -64,21 +55,18 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v4
-
       - run: npm install -g allure-commandline --save-dev
-
       - name: Download Allure Results
         uses: actions/download-artifact@v4
         with:
           name: allure-results
           path: ./allure-results
-
       - run: allure generate ./allure-results --clean -o ./allure-report
-
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy Allure Report to allure-report branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          publish_branch: allure-report
           force_orphan: true
-
-      - run: echo "View Allure report at:https://artemguschin8876.github.io/discogs-api-tests/?t=$(date +%s)"
+      - run: echo "View Allure report:https://artemguschin8876.github.io/discogs-api-tests/?t=$(date +%s)"
