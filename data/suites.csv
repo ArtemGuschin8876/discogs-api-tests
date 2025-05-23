@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","8178","Click remove on the notification and check hidden notification","ui","Thu May 22 11:22:04 UTC 2025","failed","Thu May 22 11:22:12 UTC 2025","Release page tests","src\ui\tests\release.spec.ts","",""
+"","3864","Click to add collection button and check notification","ui","Thu May 22 11:22:04 UTC 2025","failed","Thu May 22 11:22:08 UTC 2025","Release page tests","src\ui\tests\release.spec.ts","",""
+"","4155","Structure release test","ui","Thu May 22 11:22:04 UTC 2025","passed","Thu May 22 11:22:08 UTC 2025","Release page tests","src\ui\tests\release.spec.ts","",""
