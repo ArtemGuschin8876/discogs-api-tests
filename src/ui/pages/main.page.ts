@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { BasePage, LocatorMap } from './base.page';
 import { Environment } from '../../env';
+import { th } from '@faker-js/faker/.';
 
 export class MainPage extends BasePage {
   private urlMainPage: string;
@@ -51,12 +52,10 @@ export class MainPage extends BasePage {
     console.log('⏳ Waiting for user button with label:', expectedLabel);
 
     await expect(async () => {
-      const userButton = this.elements.userButton;
-
-      const isVisible = await userButton.isVisible();
+      const isVisible = await this.elements.userButton.isVisible();
       if (!isVisible) throw new Error('❌ User button is not visible');
 
-      const actualLabel = await userButton.getAttribute('aria-label');
+      const actualLabel = await this.elements.userButton.getAttribute('aria-label');
       console.log('🔍 Current label:', actualLabel);
 
       expect(actualLabel).toBe(expectedLabel);
